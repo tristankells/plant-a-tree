@@ -5,7 +5,7 @@ var connection = require("../connection/connect")();
 
 var routes = function (){
     //default route of the product controller file
-    router.route('/')
+    router.route('/login')
         .get(function (req, res){
             // Perform a SELECT * query from the Trees table
             connection.query('SELECT * FROM Trees', function (error, results, fields) {
