@@ -47,7 +47,6 @@ var routes = function (){
         .post(function (req, res){
             try {
                 res.status(200).json("Purchase made on cart: 4521 by user: admin"); 
-                // });
             } catch (error) {
                 res.status(200).json("Something went wrong with finalizing your purchase");
             }   
