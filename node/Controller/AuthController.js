@@ -3,6 +3,11 @@ var router = express.Router();
 const bcrypt = require('bcrypt');
 var connection = require("../connection/connect")();
 
+// MailGun import
+var api_key = '4a94b9ddc7e28006170e29b9e7ab5a0b-8889127d-d9d89be0';
+var domain = 'sandboxdc705a9195684b13948ef2946002cf14.mailgun.org';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+
 var routes = function (){
 
     //Login Endpoint
@@ -41,11 +46,27 @@ var routes = function (){
                     }
                 } catch (e) {
                     try {
+
                         // Hash the password send in the request
                         var hashPass = bcrypt.hashSync(req.body.password, 10);
                         console.log(hashPass);
+
+                        // SQL Query to create a cart table for a user to allow for shopping cart history
+                        connection.query('CREATE TABLE '+req.body.user+'cart (itemName VARCHAR(50), price FLOAT, Deliverable tinyint, dateAdded VARCHAR(80), purchased char(1));', function (error, results, fields) {});
+
                         // SQL query to insert user into the database
                         connection.query('INSERT INTO `users`(`username`, `hash`, `created_at`) VALUES ("'+req.body.user+'","'+hashPass+'","'+new Date()+'")', function (error, results, fields) {
+
+                            // Email data to send confirming that the user has signed up
+                            var data = {
+                                from: 'PlantATree <maxfrancis212@gmail.com>',
+                                to: 'maxfrancis212@gmail.com',
+                                subject: 'Signup',
+                                text: 'Welcome to plant-a-tree!'
+                              };
+                            // Send an email using the mailgun API 
+                            mailgun.messages().send(data, function (error, body) {});
+
                             res.status(200).json("Account created"); 
                         });
 
@@ -56,6 +77,40 @@ var routes = function (){
             });
             
         });
+
+    // Address obtaining endpoint
+    router.route('/getaddress/:user')
+        .get(function (req, res){
+            // Sends back users address
+            connection.query('SELECT `address` from `users` WHERE `username` = "'+req.params.user+'"', function (error, results, fields) {
+                //Error Handler
+                if (error)
+                    throw error;
+                // Prints the query result in JSON Format
+                res.json(results); 
+            });
+        });
+    
+    // Logout endpoint
+    router.route('/logout')
+    .get(function (req, res){
+            // Prints the query result in JSON Format
+            res.json("Thank you for shopping at plant-a-tree admin!"); 
+        });
+
+    // Address obtaining endpoint
+    router.route('/updateaddress/:user')
+        .post(function (req, res){
+            // Sends back users address
+            connection.query('UPDATE `users` SET `address`="'+req.body.address+'" WHERE `username`LIKE "'+req.params.user+'"', function (error, results, fields) {
+                //Error Handler
+                if (error)
+                    throw error;
+                // Prints the query result in JSON Format
+                res.json("user address successfully updated"); 
+            });
+        });
+
     return router;
 };
 module.exports = routes;
