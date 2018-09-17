@@ -13,9 +13,6 @@ var routes = function (){
     //Login Endpoint
     router.route('/login/:user')
         .post(function (req, res){
-            /* Uncomment this out for hash value for an account for manual account creation while registration endpoint is inactive
-            let hash = bcrypt.hashSync(req.body.password, 10);
-            console.log('password is: '+req.body.password+' ,Hashed password for '+req.params.user+' is '+hash); */
 
             // SQL query to find find user by username
             connection.query('SELECT hash FROM `users` WHERE username LIKE "'+req.params.user+'"', function (error, results, fields) {
@@ -49,13 +46,12 @@ var routes = function (){
 
                         // Hash the password send in the request
                         var hashPass = bcrypt.hashSync(req.body.password, 10);
-                        console.log(hashPass);
-
+                        
                         // SQL Query to create a cart table for a user to allow for shopping cart history
                         connection.query('CREATE TABLE '+req.body.user+'cart (itemName VARCHAR(50), price FLOAT, Deliverable tinyint, dateAdded VARCHAR(80), purchased char(1));', function (error, results, fields) {});
 
                         // SQL query to insert user into the database
-                        connection.query('INSERT INTO `users`(`username`, `hash`, `created_at`) VALUES ("'+req.body.user+'","'+hashPass+'","'+new Date()+'")', function (error, results, fields) {
+                        connection.query('INSERT INTO `users`(`username`, `hash`, `created_at`, `cartid`) VALUES ("'+req.body.user+'","'+hashPass+'","'+new Date()+'", "'+req.body.user+'cart")', function (error, results, fields) {
 
                             // Email data to send confirming that the user has signed up
                             var data = {
