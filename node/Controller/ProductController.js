@@ -5,7 +5,7 @@ var connection = require("../connection/connect")();
 
 // MailGun import
 var api_key = '';
-var domain = 'sandboxdc705a9195684b13948ef2946002cf14.mailgun.org';
+var domain = '';
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 var routes = function (){
