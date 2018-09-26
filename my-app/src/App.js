@@ -3,6 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import ProductList from "./components/ProductList";
 import ShoppingCart from "./components/ShoppingCart";
+import Navbar from "./components/Navbar";
+
 
 class App extends Component {
   state = {
@@ -44,10 +46,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Plant A Tree</h1>
-        </header>
+        < Navbar />
         <div className="App-intro">
           <ShoppingCart
             shoppingCartItems={this.state.shoppingCart}
