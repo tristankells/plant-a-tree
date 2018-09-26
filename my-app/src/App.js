@@ -21,10 +21,6 @@ class App extends Component {
       }
     ],
     shoppingCart: [
-      {
-        name: "red wood",
-        price: 20
-      }
     ]
   };
 
