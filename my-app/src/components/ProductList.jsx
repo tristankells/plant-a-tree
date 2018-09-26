@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Product from "./Product";
 
+//Product list contains all the Product components for the store
 class ProductList extends Component {
   render() {
     return (

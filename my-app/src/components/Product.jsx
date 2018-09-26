@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import tree from "../tree.jpg";
 
+//Displays an image, name, price and add to shopping cart button for all items in the store
 class Product extends Component {
   render() {
     const product = this.props.product;

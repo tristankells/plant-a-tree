@@ -6,7 +6,9 @@ import ShoppingCart from "./components/ShoppingCart";
 import Navbar from "./components/Navbar";
 
 
+//Main parent component
 class App extends Component {
+  //State tracks all shop products and items contained in the shopping cart
   state = {
     products: [
       {
@@ -26,22 +28,19 @@ class App extends Component {
     ]
   };
 
+  //Adds a product to the shopping cart array
   addItemToShoppingCart(product) {
     const newShoppingCart = this.state.shoppingCart;
     newShoppingCart.push(product);
     this.setState({ shoppingCart: newShoppingCart });
   }
 
+  //Removes a product from the shopping cart array
   removeItemFromShoppingCart(index) {
     const newShoppingCart = this.state.shoppingCart;
     newShoppingCart.splice(index, 1);
     this.setState({ shoppingCart: newShoppingCart });
   }
-
-  // handleAddItemClick() {
-  //   var testItem = {name:"pine", price:90};
-  //   this.addItemToShoppingCart(testItem);
-  // }
 
   render() {
     return (
