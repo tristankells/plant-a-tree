@@ -14,11 +14,15 @@ class App extends Component {
 
     this.state = {
       shoppingCart: [],
-      visible: false
+      shoppingCartVisible: false,
+      leftSliderMenuVisible: false
     };
-
-    this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.toggleMenu = this.toggleMenu.bind(this);
+    this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
+      this
+    );
+    this.toggleShoppingCart = this.toggleShoppingCart.bind(this);
+    this.handleBurgerButtonClick = this.handleBurgerButtonClick.bind(this);
+    this.toggleLeftSliderMenu = this.toggleLeftSliderMenu.bind(this);
   }
 
   //Adds a product to the shopping cart array
@@ -67,27 +71,49 @@ class App extends Component {
     this.setState({ shoppingCart: shoppingCart });
   }
 
-  handleMouseDown(e) {
-    this.toggleMenu();
+  handleShoppingCartButtonClick(e) {
+    this.toggleShoppingCart();
 
     console.log("clicked");
     e.stopPropagation();
   }
 
-  toggleMenu() {
+  toggleShoppingCart() {
     this.setState({
-      visible: !this.state.visible
+      shoppingCartVisible: !this.state.shoppingCartVisible
+    });
+  }
+
+  //Handle the event of a burger menu click
+  handleBurgerButtonClick(e) {
+    this.toggleLeftSliderMenu();
+
+    console.log("clicked");
+    e.stopPropagation();
+  }
+
+  //Set state of left slider menu to the opposite of its current state
+  toggleLeftSliderMenu() {
+    this.setState({
+      leftSliderMenuVisible: !this.state.leftSliderMenuVisible
     });
   }
 
   render() {
     return (
       <div className="App">
-        <Navbar handleMouseDown={this.handleMouseDown} />
+        <Navbar
+          handleShoppingCartButtonClick={this.handleShoppingCartButtonClick}
+          handleBurgerButtonClick={this.handleBurgerButtonClick}
+        />
         <div className="App-intro">
+          <CategoriesMenu
+            handleMouseDown={this.handleBurgerButtonClick}
+            menuVisibility={this.state.leftSliderMenuVisible}
+          />
           <ShoppingCartSlider
-            handleMouseDown={this.handleMouseDown}
-            menuVisibility={this.state.visible}
+            handleMouseDown={this.handleShoppingCartButtonClick}
+            menuVisibility={this.state.shoppingCartVisible}
           >
             <ShoppingCart
               shoppingCartItems={this.state.shoppingCart}

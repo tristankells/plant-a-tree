@@ -22,14 +22,14 @@ class Navbar extends Component {
             <ul>
               <li>
                 <a>
-                  <Menu onMouseDown={this.props.handleMouseDown}/>
+                  <Menu onMouseDown={this.props.handleBurgerButtonClick}/>
                 </a>
               </li>
             </ul>
           </div>
           <div className="navbar__logo__container">
             <a href="/">
-              <img alt="Image Missing" src={PatLogoText} className="navbar__logo" />
+              <img alt="" src={PatLogoText} className="navbar__logo" />
             </a>
           </div>
           <div className="navbar__links">
@@ -41,7 +41,7 @@ class Navbar extends Component {
               </li>
               <li>
                 <a>
-                  <ShoppingCart onMouseDown={this.props.handleMouseDown} />
+                  <ShoppingCart onMouseDown={this.props.handleShoppingCartButtonClick} />
                 </a>
               </li>
             </ul>

@@ -10,11 +10,7 @@ export default class CategoriesMenu extends Component {
     }
 
     return (
-      <div
-        className="categoriesMenu"
-        onMouseDown={this.props.handleMouseDown}
-        className={visibility}
-        >
+      <div id="leftSliderMenu" onMouseDown={this.props.handleMouseDown} className={visibility}>
         {this.props.children}
       </div>
     );
