@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./css/ShoppingCartSlider.css";
-import ShoppingCart from "./ShoppingCart";
+import ClearIcon from "@material-ui/icons/Clear";
 
 export default class ShoppingCartSlider extends Component {
   render() {
@@ -11,11 +11,8 @@ export default class ShoppingCartSlider extends Component {
     }
 
     return (
-      <div
-        id="flyoutMenu"
-        onMouseDown={this.props.handleMouseDown}
-        className={visibility}
-      >
+      <div id="flyoutMenu" className={visibility}>
+        <ClearIcon onMouseDown={this.props.handleMouseDown} />
         {this.props.children}
       </div>
     );
