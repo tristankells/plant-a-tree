@@ -9,18 +9,27 @@ class ShoppingCartItem extends Component {
     const item = this.props.item,
       index = this.props.index;
     return (
-
       <div className="shoppingcartitem__container">
         <div>Item</div>
-        <div><b>------</b></div>
-        <img class="ShoppingCartItemsImage"src={tree} alt=''  />
-        <div><b>Name: &nbsp;</b>{item.name}</div>
-        <div><b>Price: &nbsp;</b>{item.price}</div>
-        <div><b>Quantity: &nbsp;</b>{item.quantity}</div>
+        <div>
+          <b>------</b>
+        </div>
+        <img class="ShoppingCartItemsImage" src={tree} alt="" />
+        <div>
+          <b>Name: &nbsp;</b>
+          {item.name}
+        </div>
+        <div>
+          <b>Price: &nbsp;</b>
+          {item.price}
+        </div>
+        <div>
+          <b>Quantity: &nbsp;</b>
+          {item.quantity}
+        </div>
         <Button onClick={() => this.props.handleRemoveItemClick(index)}>
-        <RemoveCircle />
+          <RemoveCircle />
         </Button>
-
       </div>
     );
   }
