@@ -56,10 +56,10 @@ class ShoppingCart extends Component {
           );
         })}
         <br />
-        NUMBER OF ITEMS IN TROLLEY: {this.props.shoppingCartItems.length} <br />
-        SHIPPING: $20
+        Number of items in cart: &nbsp; {this.props.shoppingCartItems.length}<br />
+        Shipping: &nbsp; $20
         <br />
-        TOTAL COST (PLUS SHIPPING): ${this.totalCostOfShopping()}
+        <b>Total Cost:</b> &nbsp; ${this.totalCostOfShopping()}
       </div>
     );
   }

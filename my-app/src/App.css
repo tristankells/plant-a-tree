@@ -3,8 +3,21 @@
   margin-top: 70px;
 }
 
+.App-intro {
+  align-items: center;
+}
+
 #shoppingCart {
-  border-style: solid;
-  border-width: 2px;
-  margin: 5%;
+  max-width: 500px;
+  margin: auto;
+  padding: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  background-color: white;
+}
+
+.shoppingcartitem__container {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(231, 238, 231);
 }
