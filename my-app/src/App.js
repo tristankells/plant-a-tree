@@ -5,6 +5,7 @@ import ProductList from "./components/ProductShelf/ProductList";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Navbar from "./components/Navbar";
 import ShoppingCartSlider from "./components/ShoppingCart/ShoppingCartSlider";
+import CategoriesMenu from "./components/CategoriesMenu/CategoriesMenu";
 
 //Main parent component
 class App extends Component {
