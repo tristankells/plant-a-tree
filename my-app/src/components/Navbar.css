@@ -4,7 +4,8 @@
     left: 0;
     width: 100%;
     height: 50px;
-    background: rgb(39, 88, 47);
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .navbar__navigation {
@@ -13,15 +14,37 @@
     align-items: center;
 }
 
-.navbar__logo a{
-    color: white;
-    text-decoration: none;
-    font-size: 1.5rem;
-    padding: 0 1rem;
+.navbar__burger {
+    width: 20%;
+    margin-left: 15px;
+}
+
+.navbar__burger ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    float: left;
+}
+
+.navbar__logo {
+    width: 100px;
+    
+}
+
+.navbar__logo__container {
+    width: 60%;
+    align-items: center;
+}
+
+.navbar__links {
+    width: 20%;
+    align-items: right;
+    margin-right: 15px;
 }
 
 .navbar__links a {
-    color: white;
+    color: rgb(54, 54, 54);
 }
 
 .navbar__links ul {
@@ -29,6 +52,7 @@
     margin: 0;
     padding: 0;
     display: flex;
+    float: right;
 }
 
 .navbar__links li {
