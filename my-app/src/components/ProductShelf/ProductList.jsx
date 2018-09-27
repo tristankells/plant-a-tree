@@ -21,7 +21,7 @@ class ProductList extends Component {
     return (
       <div className="productlist__container">
         {this.state.products.map((product, i) => {
-          ProductList.jsx;
+        
           return (
             <Product
               product={product}

@@ -3,63 +3,40 @@ import ShoppingCartItem from "./ShoppingCartItem";
 
 //The shopping cart componet. Displays all ShoppingCartItems and a tally of total items
 class ShoppingCart extends Component {
-  sortShoppingCart() {
-    var uniqueArrayName = [],
-      sortedShoppingCart = [],
-      uniqueNamesAndCostArray = [];
-
-    this.props.shoppingCartItems.forEach(shoppingCartItem => {
-      if (!uniqueArrayName.includes(shoppingCartItem.name)) {
-        uniqueArrayName.push(shoppingCartItem.name);
-        uniqueNamesAndCostArray.push(shoppingCartItem);
-      } else {
-      }
-    });
-
-    uniqueArrayName.forEach(name => {
-      var count = this.props.shoppingCartItems.filter(
-        item => item.name === name
-      ).length;
-      var product = uniqueNamesAndCostArray.filter(item => item.name === name);
-      var price = product[0].price;
-
-      sortedShoppingCart.push({
-        name: name,
-        quantity: count,
-        price: price
-      });
-    });
-
-    console.log(sortedShoppingCart);
-    return sortedShoppingCart;
-  }
-
   totalCostOfShopping() {
-    var totalPrice = 0;
-    this.props.shoppingCartItems.forEach(shoppingCartItem => {
-      totalPrice += shoppingCartItem.price;
-    });
-    totalPrice += 20;
-    return <span>{totalPrice}</span>;
+    var totalPrice = 0,
+      shoppingCartItems = this.props.shoppingCartItems;
+
+    //If item cart, calcualte cost and add shipping, total price = 0
+    if (shoppingCartItems.length !== 0) {
+      shoppingCartItems.forEach(shoppingCartItem => {
+        totalPrice += shoppingCartItem.price * shoppingCartItem.quantity;
+      });
+      totalPrice += 20;
+    }
+
+    return totalPrice;
   }
   render() {
     return (
       <div id="shoppingCart">
-        {this.sortShoppingCart().map((item, index) => {
+        {this.props.shoppingCartItems.map((item, index) => {
           return (
             <ShoppingCartItem
               key={index}
               index={index}
               item={item}
               handleRemoveItemClick={this.props.handleRemoveItemClick}
+              handleAddItemClick={this.props.handleAddItemClick}
             />
           );
         })}
         <br />
-        Number of items in cart: &nbsp; {this.props.shoppingCartItems.length}<br />
+        Number of items in cart: &nbsp; {this.props.shoppingCartItems.length}
+        <br />
         Shipping: &nbsp; $20
         <br />
-        <b>Total Cost:</b> &nbsp; ${this.totalCostOfShopping()}
+        <b>Total Cost:</b> &nbsp; $<span>{this.totalCostOfShopping()}</span>
       </div>
     );
   }

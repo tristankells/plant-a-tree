@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import tree from "../../tree.jpg";
 import Button from "@material-ui/core/Button";
-import RemoveCircle from "@material-ui/icons/RemoveCircle";
+import Remove from "@material-ui/icons/Remove";
+import AddIcon from "@material-ui/icons/Add";
 
 //Disaplys all the information about an item in the shopping cart and has a remove button to remove the item from the shopping cart.
 class ShoppingCartItem extends Component {
   render() {
-    const item = this.props.item,
-      index = this.props.index;
+    const item = this.props.item;
     return (
       <div className="shoppingcartitem__container">
         <div>Item</div>
         <div>
           <b>------</b>
         </div>
-        <img class="ShoppingCartItemsImage" src={tree} alt="" />
+        <img className="ShoppingCartItemsImage" src={tree} alt="" />
         <div>
           <b>Name: &nbsp;</b>
           {item.name}
@@ -27,8 +27,11 @@ class ShoppingCartItem extends Component {
           <b>Quantity: &nbsp;</b>
           {item.quantity}
         </div>
-        <Button onClick={() => this.props.handleRemoveItemClick(index)}>
-          <RemoveCircle />
+        <Button onClick={() => this.props.handleAddItemClick(item)}>
+          <AddIcon />
+        </Button>
+        <Button onClick={() => this.props.handleRemoveItemClick(item)}>
+          <Remove />
         </Button>
       </div>
     );

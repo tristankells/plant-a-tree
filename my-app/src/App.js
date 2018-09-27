@@ -14,17 +14,48 @@ class App extends Component {
 
   //Adds a product to the shopping cart array
   addItemToShoppingCart(product) {
-    const newShoppingCart = this.state.shoppingCart;
+    var shoppingCart = this.state.shoppingCart,
+      itemAlreadyInCart = false,
+      indexOfExistingItem = 0;
 
-    newShoppingCart.push(product);
-    this.setState({ shoppingCart: newShoppingCart });
+    //Loop through shopping cart and check if product already within
+    shoppingCart.forEach((shoppingCartItem, index) => {
+      if (shoppingCartItem.name === product.name) {
+        itemAlreadyInCart = true;
+        indexOfExistingItem = index;
+      }
+    });
+
+    //If the item is already in the shopping cart, increase the existing item quantity, otherwise add to shopping cart
+    if (itemAlreadyInCart) {
+      shoppingCart[indexOfExistingItem].quantity += 1;
+    } else {
+      shoppingCart.push(product);
+    }
+
+    this.setState({ shoppingCart: shoppingCart });
   }
 
   //Removes a product from the shopping cart array
-  removeItemFromShoppingCart(index) {
-    const newShoppingCart = this.state.shoppingCart;
-    newShoppingCart.splice(index, 1);
-    this.setState({ shoppingCart: newShoppingCart });
+  removeItemFromShoppingCart(product) {
+    var shoppingCart = this.state.shoppingCart,
+      indexOfItem = 0;
+
+    //Loop through shopping cart and check if product already within
+    shoppingCart.forEach((shoppingCartItem, index) => {
+      if (shoppingCartItem.name === product.name) {
+        indexOfItem = index;
+      }
+    });
+
+    //If item has quantity of one, remove it from shiopping cart
+    //Else decrease quantity by one
+    if (shoppingCart[indexOfItem].quantity === 1) {
+      shoppingCart.splice(indexOfItem, 1);
+    } else if (shoppingCart[indexOfItem].quantity > 1) {
+      shoppingCart[indexOfItem].quantity -= 1;
+    }
+    this.setState({ shoppingCart: shoppingCart });
   }
 
   render() {
@@ -37,6 +68,7 @@ class App extends Component {
             handleRemoveItemClick={index =>
               this.removeItemFromShoppingCart(index)
             }
+            handleAddItemClick={product => this.addItemToShoppingCart(product)}
           />
           <ProductList
             handleAddItemClick={product => this.addItemToShoppingCart(product)}
