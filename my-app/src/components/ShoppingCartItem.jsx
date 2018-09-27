@@ -10,6 +10,7 @@ class ShoppingCartItem extends Component {
         <div>ITEM</div>
         <div>Name : {item.name}</div>
         <div>Price :{item.price}</div>
+        <div>Quantity :{item.quantity}</div>
         <button onClick={() => this.props.handleRemoveItemClick(index)}>
           Remove Item From Trolley
         </button>

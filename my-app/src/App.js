@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import "./ProductList.css";
 import ProductList from "./components/ProductList";
 import ShoppingCart from "./components/ShoppingCart";
 import Navbar from "./components/Navbar";
-
 
 //Main parent component
 class App extends Component {
@@ -12,16 +11,15 @@ class App extends Component {
   state = {
     products: [
       {
-        name: "birch",
-        price: 100
+        name: "Birch",
+        price: 100.0
       },
       {
-        name: "red wood",
-        price: 20
+        name: "Red Wood",
+        price: 20.0
       }
     ],
-    shoppingCart: [
-    ]
+    shoppingCart: []
   };
 
   //Adds a product to the shopping cart array
@@ -41,7 +39,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        < Navbar />
+        <Navbar />
         <div className="App-intro">
           <ShoppingCart
             shoppingCartItems={this.state.shoppingCart}
