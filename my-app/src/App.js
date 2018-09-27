@@ -4,13 +4,21 @@ import "./ProductList.css";
 import ProductList from "./components/ProductShelf/ProductList";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Navbar from "./components/Navbar";
+import ShoppingCartSlider from "./components/ShoppingCart/ShoppingCartSlider";
 
 //Main parent component
 class App extends Component {
-  //State tracks all shop products and items contained in the shopping cart
-  state = {
-    shoppingCart: []
-  };
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      shoppingCart: [],
+      visible: false
+    };
+
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
+  }
 
   //Adds a product to the shopping cart array
   addItemToShoppingCart(product) {
@@ -58,18 +66,39 @@ class App extends Component {
     this.setState({ shoppingCart: shoppingCart });
   }
 
+  handleMouseDown(e) {
+    this.toggleMenu();
+
+    console.log("clicked");
+    e.stopPropagation();
+  }
+
+  toggleMenu() {
+    this.setState({
+      visible: !this.state.visible
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <Navbar />
+        <Navbar handleMouseDown={this.handleMouseDown} />
         <div className="App-intro">
-          <ShoppingCart
-            shoppingCartItems={this.state.shoppingCart}
-            handleRemoveItemClick={index =>
-              this.removeItemFromShoppingCart(index)
-            }
-            handleAddItemClick={product => this.addItemToShoppingCart(product)}
-          />
+          <ShoppingCartSlider
+            handleMouseDown={this.handleMouseDown}
+            menuVisibility={this.state.visible}
+          >
+            <ShoppingCart
+              shoppingCartItems={this.state.shoppingCart}
+              handleRemoveItemClick={index =>
+                this.removeItemFromShoppingCart(index)
+              }
+              handleAddItemClick={product =>
+                this.addItemToShoppingCart(product)
+              }
+            />
+          </ShoppingCartSlider>
+
           <ProductList
             handleAddItemClick={product => this.addItemToShoppingCart(product)}
           />

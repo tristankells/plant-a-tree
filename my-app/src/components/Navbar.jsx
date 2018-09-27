@@ -37,7 +37,7 @@ class Navbar extends Component {
               </li>
               <li>
                 <a>
-                  <ShoppingCart />
+                  <ShoppingCart onMouseDown={this.props.handleMouseDown} />
                 </a>
               </li>
             </ul>
