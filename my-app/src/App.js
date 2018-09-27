@@ -1,30 +1,21 @@
 import React, { Component } from "react";
 import "./App.css";
 import "./ProductList.css";
-import ProductList from "./components/ProductList";
-import ShoppingCart from "./components/ShoppingCart";
+import ProductList from "./components/ProductShelf/ProductList";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Navbar from "./components/Navbar";
 
 //Main parent component
 class App extends Component {
   //State tracks all shop products and items contained in the shopping cart
   state = {
-    products: [
-      {
-        name: "Birch",
-        price: 100.0
-      },
-      {
-        name: "Red Wood",
-        price: 20.0
-      }
-    ],
     shoppingCart: []
   };
 
   //Adds a product to the shopping cart array
   addItemToShoppingCart(product) {
     const newShoppingCart = this.state.shoppingCart;
+
     newShoppingCart.push(product);
     this.setState({ shoppingCart: newShoppingCart });
   }
@@ -49,7 +40,6 @@ class App extends Component {
           />
           <ProductList
             handleAddItemClick={product => this.addItemToShoppingCart(product)}
-            products={this.state.products}
           />
         </div>
       </div>

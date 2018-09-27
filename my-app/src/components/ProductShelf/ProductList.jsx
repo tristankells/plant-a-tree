@@ -3,10 +3,24 @@ import Product from "./Product";
 
 //Product list contains all the Product components for the store
 class ProductList extends Component {
+  state = {
+    products: [
+      {
+        name: "Birch",
+        price: 100.0,
+        quantity: 1
+      },
+      {
+        name: "Red Wood",
+        price: 20.0,
+        quantity: 1
+      }
+    ]
+  };
   render() {
     return (
       <div>
-        {this.props.products.map((product, i) => {
+        {this.state.products.map((product, i) => {
           return (
             <Product
               product={product}

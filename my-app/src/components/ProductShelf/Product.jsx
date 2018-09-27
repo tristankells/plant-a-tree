@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import tree from "../tree.jpg";
+import tree from "../../tree.jpg";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 
@@ -9,7 +9,7 @@ class Product extends Component {
     const product = this.props.product;
     return (
       <div className="Product">
-        <img src={tree} alt="Image is not ready" />
+        <img src={tree} alt="" />
         <br />
         <span className="ProductName"> {product.name} - </span>
         <span> ${product.price.toFixed(2)}</span>
