@@ -1,0 +1,9 @@
+.ShoppingCartItemsImage {
+  width: 13%;
+  height: 13%;
+}
+.shoppingcartitem__container {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(231, 238, 231);
+}

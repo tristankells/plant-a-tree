@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./CategoriesMenu.css";
+import ClearIcon from "@material-ui/icons/Clear";
 
 export default class CategoriesMenu extends Component {
   render() {
@@ -10,7 +11,8 @@ export default class CategoriesMenu extends Component {
     }
 
     return (
-      <div id="leftSliderMenu" onMouseDown={this.props.handleMouseDown} className={visibility}>
+      <div id="leftSliderMenu" className={visibility}>
+        <ClearIcon onMouseDown={this.props.handleMouseDown} />
         {this.props.children}
       </div>
     );

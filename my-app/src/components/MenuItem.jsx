@@ -15,8 +15,6 @@ export default class MenuItem extends Component {
       >
         {this.props.children}
       </div>
-
-      
     );
   }
 }
