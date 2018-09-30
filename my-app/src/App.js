@@ -3,7 +3,7 @@ import "./App.css";
 import "./ProductList.css";
 import ProductList from "./components/ProductShelf/ProductList";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/TopNavbar/Navbar";
 
 //Main parent component
 class App extends Component {

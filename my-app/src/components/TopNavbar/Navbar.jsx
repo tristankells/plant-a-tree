@@ -6,7 +6,7 @@ import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import Menu from "@material-ui/icons/Menu";
 
 //Import images
-import PatLogoText from "../textlogo.png";
+import PatLogoText from "../../textlogo.png";
 
 class Navbar extends Component {
   render() {
