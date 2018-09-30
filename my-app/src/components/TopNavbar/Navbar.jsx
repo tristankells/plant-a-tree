@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 import "./Navbar.css";
+
+//Import icons
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import Menu from "@material-ui/icons/Menu";
@@ -8,6 +10,8 @@ import Menu from "@material-ui/icons/Menu";
 //Import images
 import PatLogoText from "../../textlogo.png";
 
+
+//Main Navbar component
 class Navbar extends Component {
   render() {
     // const navbar = this.props.navbar;
@@ -18,7 +22,7 @@ class Navbar extends Component {
             <ul>
               <li>
                 <a>
-                  <Menu />
+                  <Menu onMouseDown={this.props.handleBurgerButtonClick}/>
                 </a>
               </li>
             </ul>
@@ -37,7 +41,7 @@ class Navbar extends Component {
               </li>
               <li>
                 <a>
-                  <ShoppingCart />
+                  <ShoppingCart onMouseDown={this.props.handleShoppingCartButtonClick} />
                 </a>
               </li>
             </ul>

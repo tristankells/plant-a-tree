@@ -7,10 +7,21 @@ import Navbar from "./components/TopNavbar/Navbar";
 
 //Main parent component
 class App extends Component {
-  //State tracks all shop products and items contained in the shopping cart
-  state = {
-    shoppingCart: []
-  };
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      shoppingCart: [],
+      shoppingCartVisible: false,
+      leftSliderMenuVisible: false
+    };
+    this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
+      this
+    );
+    this.toggleShoppingCart = this.toggleShoppingCart.bind(this);
+    this.handleBurgerButtonClick = this.handleBurgerButtonClick.bind(this);
+    this.toggleLeftSliderMenu = this.toggleLeftSliderMenu.bind(this);
+  }
 
   //Adds a product to the shopping cart array
   addItemToShoppingCart(product) {
@@ -58,18 +69,61 @@ class App extends Component {
     this.setState({ shoppingCart: shoppingCart });
   }
 
+  handleShoppingCartButtonClick(e) {
+    this.toggleShoppingCart();
+
+    console.log("clicked");
+    e.stopPropagation();
+  }
+
+  toggleShoppingCart() {
+    this.setState({
+      shoppingCartVisible: !this.state.shoppingCartVisible
+    });
+  }
+
+  //Handle the event of a burger menu click
+  handleBurgerButtonClick(e) {
+    this.toggleLeftSliderMenu();
+
+    console.log("clicked");
+    e.stopPropagation();
+  }
+
+  //Set state of left slider menu to the opposite of its current state
+  toggleLeftSliderMenu() {
+    this.setState({
+      leftSliderMenuVisible: !this.state.leftSliderMenuVisible
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <Navbar />
+        <Navbar
+          handleShoppingCartButtonClick={this.handleShoppingCartButtonClick}
+          handleBurgerButtonClick={this.handleBurgerButtonClick}
+        />
         <div className="App-intro">
-          <ShoppingCart
-            shoppingCartItems={this.state.shoppingCart}
-            handleRemoveItemClick={index =>
-              this.removeItemFromShoppingCart(index)
-            }
-            handleAddItemClick={product => this.addItemToShoppingCart(product)}
+          <CategoriesMenu
+            handleMouseDown={this.handleBurgerButtonClick}
+            menuVisibility={this.state.leftSliderMenuVisible}
           />
+          <ShoppingCartSlider
+            handleMouseDown={this.handleShoppingCartButtonClick}
+            menuVisibility={this.state.shoppingCartVisible}
+          >
+            <ShoppingCart
+              shoppingCartItems={this.state.shoppingCart}
+              handleRemoveItemClick={index =>
+                this.removeItemFromShoppingCart(index)
+              }
+              handleAddItemClick={product =>
+                this.addItemToShoppingCart(product)
+              }
+            />
+          </ShoppingCartSlider>
+
           <ProductList
             handleAddItemClick={product => this.addItemToShoppingCart(product)}
           />

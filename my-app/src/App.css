@@ -7,21 +7,4 @@
   align-items: center;
 }
 
-#shoppingCart {
-  max-width: 500px;
-  margin: auto;
-  padding: 15px;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  background-color: white;
-}
 
-.ShoppingCartItemsImage {
-  width: 13%;
-  height: 13%;
-}
-.shoppingcartitem__container {
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: rgb(231, 238, 231);
-}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./css/ShoppingCart.css";
 import ShoppingCartItem from "./ShoppingCartItem";
 
 //The shopping cart componet. Displays all ShoppingCartItems and a tally of total items
