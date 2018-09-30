@@ -36,7 +36,7 @@ class Navbar extends Component {
             <ul>
               <li>
                 <a>
-                  <AccountCircle />
+                  <AccountCircle onMouseDown={this.props.handleProfileMenuButtonClick}/>
                 </a>
               </li>
               <li>

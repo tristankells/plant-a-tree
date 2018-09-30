@@ -6,6 +6,7 @@ import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Navbar from "./components/TopNavbar/Navbar";
 import ShoppingCartSlider from "./components/ShoppingCart/ShoppingCartSlider";
 import CategoriesMenu from "./components/CategoriesMenu/CategoriesMenu";
+import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
 
 
 //Main parent component
@@ -16,14 +17,17 @@ class App extends Component {
     this.state = {
       shoppingCart: [],
       shoppingCartVisible: false,
-      leftSliderMenuVisible: false
+      leftSliderMenuVisible: false,
+      profileMenuVisible: true
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this
     );
+    this.handleProfileMenuButtonClick = this.handleProfileMenuButtonClick.bind(this);
     this.toggleShoppingCart = this.toggleShoppingCart.bind(this);
     this.handleBurgerButtonClick = this.handleBurgerButtonClick.bind(this);
     this.toggleLeftSliderMenu = this.toggleLeftSliderMenu.bind(this);
+    this.toggleProfileMenu = this.toggleProfileMenu.bind(this);
   }
 
   //Adds a product to the shopping cart array
@@ -100,10 +104,26 @@ class App extends Component {
     });
   }
 
+  //Handle the event of a profile menu click
+  handleProfileMenuButtonClick(e) {
+    this.toggleProfileMenu();
+
+    console.log("Profile clicked");
+    e.stopPropagation();
+  }
+
+  //Set state of profile menu to the opposite of its current state
+  toggleProfileMenu() {
+    this.setState({
+      profileMenuVisible: !this.state.profileMenuVisible
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <Navbar
+          handleProfileMenuButtonClick={this.handleProfileMenuButtonClick}
           handleShoppingCartButtonClick={this.handleShoppingCartButtonClick}
           handleBurgerButtonClick={this.handleBurgerButtonClick}
         />
@@ -111,6 +131,10 @@ class App extends Component {
           <CategoriesMenu
             handleMouseDown={this.handleBurgerButtonClick}
             menuVisibility={this.state.leftSliderMenuVisible}
+          />
+          <ProfileMenu
+            handleMouseDown={this.handleProfileMenuButtonClick}
+            menuVisibility={this.state.profileMenuVisible}
           />
           <ShoppingCartSlider
             handleMouseDown={this.handleShoppingCartButtonClick}
