@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt');
 var connection = require("../connection/connect")();
 
 // MailGun import
-var api_key = '4a94b9ddc7e28006170e29b9e7ab5a0b-8889127d-d9d89be0';
-var domain = 'sandboxdc705a9195684b13948ef2946002cf14.mailgun.org';
+var api_key = '';
+var domain = '';
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 var routes = function (){
