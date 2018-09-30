@@ -12,7 +12,7 @@ export default class ShoppingCartSlider extends Component {
 
     return (
       <div id="flyoutMenu" className={visibility}>
-        <ClearIcon onMouseDown={this.props.handleMouseDown} />
+        <ClearIcon className="slider-close-icon" onMouseDown={this.props.handleMouseDown} />
         {this.props.children}
       </div>
     );
