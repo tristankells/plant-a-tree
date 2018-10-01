@@ -3,9 +3,12 @@ import "./App.css";
 import "./ProductList.css";
 import ProductList from "./components/ProductShelf/ProductList";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/TopNavbar/Navbar";
 import ShoppingCartSlider from "./components/ShoppingCart/ShoppingCartSlider";
 import CategoriesMenu from "./components/CategoriesMenu/CategoriesMenu";
+import Backdrop from "./components/Backdrop/Backdrop";
+import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
+
 
 import Product from "./components/ProductShelf/Product";
 
@@ -17,14 +20,17 @@ class App extends Component {
     this.state = {
       shoppingCart: [],
       shoppingCartVisible: false,
-      leftSliderMenuVisible: false
+      leftSliderMenuVisible: false,
+      profileMenuVisible: false
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this
     );
+    this.handleProfileMenuButtonClick = this.handleProfileMenuButtonClick.bind(this);
     this.toggleShoppingCart = this.toggleShoppingCart.bind(this);
     this.handleBurgerButtonClick = this.handleBurgerButtonClick.bind(this);
     this.toggleLeftSliderMenu = this.toggleLeftSliderMenu.bind(this);
+    this.toggleProfileMenu = this.toggleProfileMenu.bind(this);
   }
 
   //Adds a product to the shopping cart array
@@ -63,7 +69,7 @@ class App extends Component {
       }
     });
 
-    //If item has quantity of one, remove it from shiopping cart
+    //If item has quantity of one, remove it from shopping cart
     //Else decrease quantity by one
     if (shoppingCart[indexOfItem].quantity === 1) {
       shoppingCart.splice(indexOfItem, 1);
@@ -98,13 +104,32 @@ class App extends Component {
   toggleLeftSliderMenu() {
     this.setState({
       leftSliderMenuVisible: !this.state.leftSliderMenuVisible
+      
+    });
+  }
+
+  //Handle the event of a profile menu click
+  handleProfileMenuButtonClick(e) {
+    this.toggleProfileMenu();
+
+    console.log("Profile clicked");
+    e.stopPropagation();
+  }
+
+  //Set state of profile menu to the opposite of its current state
+  toggleProfileMenu() {
+    this.setState({
+      profileMenuVisible: !this.state.profileMenuVisible
     });
   }
 
   render() {
+
     return (
       <div className="App">
+        
         <Navbar
+          handleProfileMenuButtonClick={this.handleProfileMenuButtonClick}
           handleShoppingCartButtonClick={this.handleShoppingCartButtonClick}
           handleBurgerButtonClick={this.handleBurgerButtonClick}
         />
@@ -113,9 +138,14 @@ class App extends Component {
             handleMouseDown={this.handleBurgerButtonClick}
             menuVisibility={this.state.leftSliderMenuVisible}
           />
+          <ProfileMenu
+            handleMouseDown={this.handleProfileMenuButtonClick}
+            menuVisibility={this.state.profileMenuVisible}
+          />
           <ShoppingCartSlider
             handleMouseDown={this.handleShoppingCartButtonClick}
             menuVisibility={this.state.shoppingCartVisible}
+            
           >
             <ShoppingCart
               shoppingCartItems={this.state.shoppingCart}
@@ -132,6 +162,7 @@ class App extends Component {
           <ProductList
             handleAddItemClick={product => this.addItemToShoppingCart(product)}
           />
+          <Backdrop />
         </div>
       </div>
     );

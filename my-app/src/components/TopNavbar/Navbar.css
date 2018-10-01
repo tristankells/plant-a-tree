@@ -6,6 +6,12 @@
     height: 50px;
     background: white;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);
+    z-index: 0;
+}
+
+.navbar svg:hover{
+    cursor: pointer;
+    color: rgb(155, 170, 155);
 }
 
 .navbar__navigation {
@@ -18,7 +24,6 @@
     width: 20%;
     margin-left: 15px;
 }
-
 .navbar__burger ul {
     list-style: none;
     margin: 0;

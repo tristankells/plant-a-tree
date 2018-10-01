@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./css/ShoppingCartSlider.css";
+import "./ProfileMenu.css";
 import ClearIcon from "@material-ui/icons/Clear";
 
-export default class ShoppingCartSlider extends Component {
+export default class ProfileMenu extends Component {
   render() {
     var visibility = "hide";
 
@@ -11,9 +11,11 @@ export default class ShoppingCartSlider extends Component {
     }
 
     return (
-      <div id="flyoutMenu" className={visibility}>
-        <ClearIcon className="slider-close-icon" onMouseDown={this.props.handleMouseDown} />
+      <div id="profileMenu" className={visibility}>
+        <ClearIcon onMouseDown={this.props.handleMouseDown} />
         {this.props.children}
+        <br/>
+        <b>Account login and settings section</b>
       </div>
     );
   }
