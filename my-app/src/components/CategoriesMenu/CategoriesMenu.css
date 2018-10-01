@@ -1,20 +1,24 @@
 #leftSliderMenu {
   width: 45vw;
+  max-width: 300px;
   height: 100vh;
-  background-color: #f0eee7;
+  background-image: linear-gradient(-90deg, #182A0F, rgb(43, 66, 31));
+  color: white;
+  border-radius: 0px 10px 10px 0px;
   position: fixed;
   top: 0;
   left: 0;
-  -webkit-transition: 0.5s ease-in-out; 
-  -moz-transition: 0.5s ease-in-out; 
-  -o-transition: 0.5s ease-in-out; 
-  transition: 0.5s ease-in-out; 
+  -webkit-transition: 0.2s ease-out; 
+  -moz-transition: 0.2s ease-out; 
+  -o-transition: 0.2s ease-out; 
+  transition: 0.2s ease-out; 
   margin: 0; 
   padding: 0; 
   -webkit-text-size-adjust: none; 
   overflow: scroll;
   z-index: 200;
   box-shadow: 10px 0px 50px rgba(0,0,0,0.2);
+  opacity: 0.92;
 }
 
 #leftSliderMenu.hide {

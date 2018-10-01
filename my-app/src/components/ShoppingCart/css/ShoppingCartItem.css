@@ -1,9 +1,16 @@
 .ShoppingCartItemsImage {
-  width: 13%;
-  height: 13%;
+  width: 20%;
+  height: 20%;
 }
 .shoppingcartitem__container {
   padding: 10px;
   margin-bottom: 10px;
-  background-color: rgb(231, 238, 231);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(255, 255, 255, 0.116);
+  text-align: center;
+}
+
+.shoppingcartitem__container svg {
+  color: white;
 }
