@@ -3,7 +3,7 @@
   height: 100vh;
   background-color: #f0eee7;
   position: fixed;
-  top: 1;
+  top: 0;
   right: 0;
   transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1);
   overflow: scroll;
