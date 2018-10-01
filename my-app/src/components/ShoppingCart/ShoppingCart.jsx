@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./css/ShoppingCart.css";
 import ShoppingCartItem from "./ShoppingCartItem";
+import { Button } from "@material-ui/core";
 
 //The shopping cart componet. Displays all ShoppingCartItems and a tally of total items
 class ShoppingCart extends Component {
@@ -38,6 +39,8 @@ class ShoppingCart extends Component {
         Shipping: &nbsp; $20
         <br />
         <b>Total Cost:</b> &nbsp; $<span>{this.totalCostOfShopping()}</span>
+        <br />
+        <Button>Purchase</Button>
       </div>
     );
   }
