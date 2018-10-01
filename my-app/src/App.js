@@ -7,6 +7,8 @@ import Navbar from "./components/Navbar";
 import ShoppingCartSlider from "./components/ShoppingCart/ShoppingCartSlider";
 import CategoriesMenu from "./components/CategoriesMenu/CategoriesMenu";
 
+import Product from "./components/ProductShelf/Product";
+
 //Main parent component
 class App extends Component {
   constructor(props, context) {
@@ -125,6 +127,7 @@ class App extends Component {
               }
             />
           </ShoppingCartSlider>
+          
 
           <ProductList
             handleAddItemClick={product => this.addItemToShoppingCart(product)}
