@@ -4,8 +4,8 @@ var router = express.Router();
 var connection = require("../connection/connect")(); 
 
 // MailGun import
-var api_key = '';
-var domain = '';
+var api_key = '1239d9iasoj';
+var domain = '1230-oiasdkl';
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 var routes = function (){
