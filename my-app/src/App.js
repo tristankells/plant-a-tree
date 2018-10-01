@@ -130,6 +130,10 @@ class App extends Component {
     this.setState({
       profileMenuVisible: !this.state.profileMenuVisible
     });
+    this.setState({
+      backDropVisible: !this.state.backDropVisible
+
+    });
   }
 
   render() {

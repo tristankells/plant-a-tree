@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./ProfileMenu.css";
 import ClearIcon from "@material-ui/icons/Clear";
+import Button from "@material-ui/core/Button";
 
 export default class ProfileMenu extends Component {
   constructor(props) {
@@ -45,11 +46,12 @@ export default class ProfileMenu extends Component {
 
     return (
       <div id="profileMenu" className={visibility}>
-        <ClearIcon onMouseDown={this.props.handleMouseDown} />
+        <ClearIcon className="slider-close-icon" onMouseDown={this.props.handleMouseDown} />
         {this.props.children}
-        <br/>
-        <b>Account</b>
-        <br/>
+
+        <div className="account-section__header">ACCOUNT</div>
+
+        <div className="login-section__header"><b>Login:</b></div>
 
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -69,10 +71,10 @@ export default class ProfileMenu extends Component {
               value={this.state.numberOfGuests}
               onChange={this.handleInputChange} />
           </label><br/>
-          <input type="submit" value="Log In" />
+          <button className="submit-button" type="submit" value="Log In">Submit</button>
         </form>
 
-        <br/><br/>
+        <div className="signup-section__header"><b>New?</b> Sign-up here:</div>
 
         <form onSubmit={this.signUpSubmit}>
           <label>
@@ -91,8 +93,9 @@ export default class ProfileMenu extends Component {
               type="password"
               value={this.state.numberOfGuests}
               onChange={this.handleInputChange} />
-          </label><br/>
-          <input type="submit" value="Sign Up" />
+          </label>
+          <br/>
+          <button className="submit-button" type="submit" value="Sign Up">Submit</button>
         </form>
         
       </div>
