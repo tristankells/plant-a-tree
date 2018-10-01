@@ -8,7 +8,8 @@ import ShoppingCartSlider from "./components/ShoppingCart/ShoppingCartSlider";
 import CategoriesMenu from "./components/CategoriesMenu/CategoriesMenu";
 import Backdrop from "./components/Backdrop/Backdrop";
 import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
-
+import ProductCarousel from "./components/ProductCarousel/ProductCarousel.jsx";
+import Product from "./components/ProductShelf/Product";
 
 //Main parent component
 class App extends Component {
@@ -19,7 +20,8 @@ class App extends Component {
       shoppingCart: [],
       shoppingCartVisible: false,
       leftSliderMenuVisible: false,
-      profileMenuVisible: false
+      profileMenuVisible: false,
+      backDropVisible: false
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this
@@ -87,6 +89,11 @@ class App extends Component {
   toggleShoppingCart() {
     this.setState({
       shoppingCartVisible: !this.state.shoppingCartVisible
+
+    });
+    this.setState({
+      backDropVisible: !this.state.backDropVisible
+
     });
   }
 
@@ -103,6 +110,10 @@ class App extends Component {
     this.setState({
       leftSliderMenuVisible: !this.state.leftSliderMenuVisible
       
+    });
+    this.setState({
+      backDropVisible: !this.state.backDropVisible
+
     });
   }
 
@@ -155,11 +166,14 @@ class App extends Component {
               }
             />
           </ShoppingCartSlider>
+          
 
           <ProductList
             handleAddItemClick={product => this.addItemToShoppingCart(product)}
           />
-          <Backdrop />
+          <Backdrop 
+            backDropVisibility={this.state.backDropVisible}
+          />
         </div>
       </div>
     );
