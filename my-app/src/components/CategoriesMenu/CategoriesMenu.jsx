@@ -12,7 +12,7 @@ export default class CategoriesMenu extends Component {
 
     return (
       <div id="leftSliderMenu" className={visibility}>
-        <ClearIcon onMouseDown={this.props.handleMouseDown} />
+        <ClearIcon className="slider-close-icon" onMouseDown={this.props.handleMouseDown} />
         {this.props.children}
       </div>
     );

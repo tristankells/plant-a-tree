@@ -8,7 +8,7 @@ import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import Menu from "@material-ui/icons/Menu";
 
 //Import images
-import PatLogoText from "../textlogo.png";
+import PatLogoText from "../../textlogo.png";
 
 
 //Main Navbar component
@@ -36,7 +36,7 @@ class Navbar extends Component {
             <ul>
               <li>
                 <a>
-                  <AccountCircle />
+                  <AccountCircle onMouseDown={this.props.handleProfileMenuButtonClick}/>
                 </a>
               </li>
               <li>
