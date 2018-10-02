@@ -3,6 +3,8 @@ import "./ProfileMenu.css";
 import ClearIcon from "@material-ui/icons/Clear";
 import Button from "@material-ui/core/Button";
 
+const API = 'https://dog.ceo/api/breed/shiba/images/random';
+
 export default class ProfileMenu extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,16 @@ export default class ProfileMenu extends Component {
 
   handleSubmit(event) {
     alert('Username entered: ' + this.state.isGoing + ", Password Entered: "+this.state.numberOfGuests);
+    fetch(API)
+    .then(response =>{
+      if (response.ok) {
+        console.log(response.json());
+        return response.json();
+      } else {
+        throw new Error('Something went wrong with the API call');
+      }
+    })
+    
     event.preventDefault();
   }
 
