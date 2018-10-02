@@ -6,8 +6,8 @@ import { Button } from "@material-ui/core";
 //The shopping cart componet. Displays all ShoppingCartItems and a tally of total items
 class ShoppingCart extends Component {
   totalCostOfShopping() {
-    var totalPrice = 0,
-      shoppingCartItems = this.props.shoppingCartItems;
+    var totalPrice = 0;
+    var shoppingCartItems = this.props.shoppingCartItems;
 
     //If item cart, calcualte cost and add shipping, total price = 0
     if (shoppingCartItems.length !== 0) {
@@ -40,7 +40,7 @@ class ShoppingCart extends Component {
         <br />
         <b>Total Cost:</b> &nbsp; $<span>{this.totalCostOfShopping()}</span>
         <br />
-        <Button>Purchase</Button>
+        <Button onClick={this.props.handlePurchaseBtnClick}>Purchase</Button>
       </div>
     );
   }
