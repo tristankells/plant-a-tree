@@ -46,21 +46,10 @@ class App extends Component {
     this.toggleProfileMenu = this.toggleProfileMenu.bind(this);
   }
 
-  handleNavToPaymentView = () => {
-    this.setState({ view: 3 }, () => {
-      console.log("Button CLick");
-      console.log(this.state.view);
+  handleLogoClick = () => {
+    this.setState({
+      redirect: true
     });
-  };
-
-  navToShippingView = () => {
-    this.setState({ view: 2 });
-    console.log("Button CLick");
-    this.toggleShoppingCart();
-  };
-
-  navToStoreFrontView = () => {
-    this.setState({ view: 1 });
   };
 
   //Adds a product to the shopping cart array
@@ -162,6 +151,10 @@ class App extends Component {
   }
 
   render() {
+    let redirect = <div />;
+    if (this.state.redirect) {
+      redirect = <Redirect push to="/" />;
+    }
     return (
       <Router>
         <div className="App">
@@ -169,6 +162,7 @@ class App extends Component {
             handleProfileMenuButtonClick={this.handleProfileMenuButtonClick}
             handleShoppingCartButtonClick={this.handleShoppingCartButtonClick}
             handleBurgerButtonClick={this.handleBurgerButtonClick}
+            handleLogoClick={this.handleLogoClick}
           />
           <div className="App-intro">
             <CategoriesMenu
@@ -196,7 +190,7 @@ class App extends Component {
                 <Link to="/shipping">Enter Shipping Address</Link>
               </ShoppingCart>
             </ShoppingCartSlider>
-
+            {redirect}
             <Route
               exact
               path="/"

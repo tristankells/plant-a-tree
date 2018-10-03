@@ -6,13 +6,14 @@ import "./Navbar.css";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import Menu from "@material-ui/icons/Menu";
+import { Redirect } from "react-router";
 
 //Import images
 import PatLogoText from "../../textlogo.png";
 
-
 //Main Navbar component
 class Navbar extends Component {
+
   render() {
     // const navbar = this.props.navbar;
     return (
@@ -22,26 +23,30 @@ class Navbar extends Component {
             <ul>
               <li>
                 <a>
-                  <Menu onMouseDown={this.props.handleBurgerButtonClick}/>
+                  <Menu onMouseDown={this.props.handleBurgerButtonClick} />
                 </a>
               </li>
             </ul>
           </div>
           <div className="navbar__logo__container">
             <a href="/">
-              <img alt="" src={PatLogoText} className="navbar__logo" />
+              <img onMouseDown={this.props.handleLogoCLick} alt="" src={PatLogoText} className="navbar__logo" />
             </a>
           </div>
           <div className="navbar__links">
             <ul>
               <li>
                 <a>
-                  <AccountCircle onMouseDown={this.props.handleProfileMenuButtonClick}/>
+                  <AccountCircle
+                    onMouseDown={this.props.handleProfileMenuButtonClick}
+                  />
                 </a>
               </li>
               <li>
                 <a>
-                  <ShoppingCart onMouseDown={this.props.handleShoppingCartButtonClick} />
+                  <ShoppingCart
+                    onMouseDown={this.props.handleShoppingCartButtonClick}
+                  />
                 </a>
               </li>
             </ul>
