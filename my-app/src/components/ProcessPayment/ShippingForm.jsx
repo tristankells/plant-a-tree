@@ -24,9 +24,7 @@ class ShippingForm extends Component {
           <input id="phoneNumberIn" type="text" />
           <br />
         </form>
-        <button onClick={() =>this.props.navToPaymentView()}>
-          Deliver To This Address
-        </button>
+        {this.props.children}
       </div>
     );
   }

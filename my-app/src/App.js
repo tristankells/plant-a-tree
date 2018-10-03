@@ -8,10 +8,18 @@ import ShoppingCartSlider from "./components/ShoppingCart/ShoppingCartSlider";
 import CategoriesMenu from "./components/CategoriesMenu/CategoriesMenu";
 import Backdrop from "./components/Backdrop/Backdrop";
 import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
-import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
-import Product from "./components/ProductShelf/Product";
-import CreditCardForm from "./components/ProcessPayment/ShippingForm";
+// import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
+// import Product from "./components/ProductShelf/Product";
+import CreditCardForm from "./components/ProcessPayment/CreditCardForm";
 import ShippingForm from "./components/ProcessPayment/ShippingForm";
+// import route Components here
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
 //Main parent component
 class App extends Component {
@@ -155,42 +163,65 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Navbar
-          handleProfileMenuButtonClick={this.handleProfileMenuButtonClick}
-          handleShoppingCartButtonClick={this.handleShoppingCartButtonClick}
-          handleBurgerButtonClick={this.handleBurgerButtonClick}
-        />
-        <div className="App-intro">
-          <CategoriesMenu
-            handleMouseDown={this.handleBurgerButtonClick}
-            menuVisibility={this.state.leftSliderMenuVisible}
+      <Router>
+        <div className="App">
+          <Navbar
+            handleProfileMenuButtonClick={this.handleProfileMenuButtonClick}
+            handleShoppingCartButtonClick={this.handleShoppingCartButtonClick}
+            handleBurgerButtonClick={this.handleBurgerButtonClick}
           />
-          <ProfileMenu
-            handleMouseDown={this.handleProfileMenuButtonClick}
-            menuVisibility={this.state.profileMenuVisible}
-          />
-          <ShoppingCartSlider
-            handleMouseDown={this.handleShoppingCartButtonClick}
-            menuVisibility={this.state.shoppingCartVisible}
-          >
-            <ShoppingCart
-              shoppingCartItems={this.state.shoppingCart}
-              handleRemoveItemClick={index =>
-                this.removeItemFromShoppingCart(index)
-              }
-              handleAddItemClick={product =>
-                this.addItemToShoppingCart(product)
-              }
-              handlePurchaseBtnClick={this.navToShippingView}
+          <div className="App-intro">
+            <CategoriesMenu
+              handleMouseDown={this.handleBurgerButtonClick}
+              menuVisibility={this.state.leftSliderMenuVisible}
             />
-          </ShoppingCartSlider>
-          <ProductList
-            handleAddItemClick={product => this.addItemToShoppingCart(product)}
-          />
-          <Backdrop backDropVisibility={this.state.backDropVisible} />
+            <ProfileMenu
+              handleMouseDown={this.handleProfileMenuButtonClick}
+              menuVisibility={this.state.profileMenuVisible}
+            />
+            <ShoppingCartSlider
+              handleMouseDown={this.handleShoppingCartButtonClick}
+              menuVisibility={this.state.shoppingCartVisible}
+            >
+              <ShoppingCart
+                shoppingCartItems={this.state.shoppingCart}
+                handleRemoveItemClick={index =>
+                  this.removeItemFromShoppingCart(index)
+                }
+                handleAddItemClick={product =>
+                  this.addItemToShoppingCart(product)
+                }
+                handlePurchaseBtnClick={this.navToShippingView}
+              >
+                <Link to="/shipping">Enter Shipping Address</Link>
+              </ShoppingCart>
+            </ShoppingCartSlider>
+
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <ProductList
+                  handleAddItemClick={product =>
+                    this.addItemToShoppingCart(product)
+                  }
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/shipping"
+              render={() => (
+                <ShippingForm>
+                  <Link to="/payment">Go to Payment Detials</Link>{" "}
+                </ShippingForm>
+              )}
+            />
+            <Route exact path="/payment" render={() => <CreditCardForm />} />
+            <Backdrop backDropVisibility={this.state.backDropVisible} />
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
