@@ -10,7 +10,8 @@ import Backdrop from "./components/Backdrop/Backdrop";
 import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
 import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 import Product from "./components/ProductShelf/Product";
-import CreditCardForm from "./components/PaymentView/CreditCardForm";
+import CreditCardForm from "./components/ProcessPayment/ShippingForm";
+import ShippingForm from "./components/ProcessPayment/ShippingForm";
 
 //Main parent component
 class App extends Component {
@@ -37,14 +38,23 @@ class App extends Component {
     this.toggleProfileMenu = this.toggleProfileMenu.bind(this);
   }
 
-  navToPurchaseView = () => {
+  handleNavToPaymentView = () => {
+    this.setState({ view: 3 }, () => {
+      console.log("Button CLick");
+      console.log(this.state.view);
+    });
+  };
+
+  navToShippingView = () => {
     this.setState({ view: 2 });
-    console.log("Butotn CLick");
+    console.log("Button CLick");
+    this.toggleShoppingCart();
   };
 
   navToStoreFrontView = () => {
     this.setState({ view: 1 });
   };
+
   //Adds a product to the shopping cart array
   addItemToShoppingCart(product) {
     var shoppingCart = this.state.shoppingCart,
@@ -144,18 +154,6 @@ class App extends Component {
   }
 
   render() {
-    let displayView;
-
-    //Change the content of the page body depending on the value of the state.view
-    if (this.state.view === 1) {
-      displayView = (
-        <ProductList
-          handleAddItemClick={product => this.addItemToShoppingCart(product)}
-        />
-      );
-    } else if (this.state.view === 2) {
-      displayView = <CreditCardForm />;
-    }
     return (
       <div className="App">
         <Navbar
@@ -184,10 +182,12 @@ class App extends Component {
               handleAddItemClick={product =>
                 this.addItemToShoppingCart(product)
               }
-              handlePurchaseBtnClick={this.navToPurchaseView}
+              handlePurchaseBtnClick={this.navToShippingView}
             />
           </ShoppingCartSlider>
-          {displayView}
+          <ProductList
+            handleAddItemClick={product => this.addItemToShoppingCart(product)}
+          />
           <Backdrop backDropVisibility={this.state.backDropVisible} />
         </div>
       </div>

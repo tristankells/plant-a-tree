@@ -40,7 +40,7 @@ class ShoppingCart extends Component {
         <br />
         <b>Total Cost:</b> &nbsp; $<span>{this.totalCostOfShopping()}</span>
         <br />
-        <Button onClick={this.props.handlePurchaseBtnClick}>Purchase</Button>
+       { <Button onClick={this.props.handlePurchaseBtnClick}>Purchase</Button>}
       </div>
     );
   }
