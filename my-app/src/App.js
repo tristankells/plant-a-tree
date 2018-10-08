@@ -34,7 +34,11 @@ class App extends Component {
       backDropVisible: false,
       view: 1,
       address: {},
-      creditCard: {}
+      creditCard: {},
+      loggedUser: "tuck",
+      // Variables related to Profile Menu
+      username: "",
+      password: ""
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this
@@ -46,6 +50,70 @@ class App extends Component {
     this.handleBurgerButtonClick = this.handleBurgerButtonClick.bind(this);
     this.toggleLeftSliderMenu = this.toggleLeftSliderMenu.bind(this);
     this.toggleProfileMenu = this.toggleProfileMenu.bind(this);
+
+    // Functions related to Profile Menu
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.signUpSubmit = this.signUpSubmit.bind(this);
+  }
+
+  // Functions related to Profile Menu
+  handleLoginSubmit(event) {
+    var auth = false;
+    fetch("http://localhost:117/auth/login/" + this.state.username, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        password: this.state.password
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          alert("We have a problem");
+        }
+      })
+      .then(function(myJson) {
+        alert(myJson);
+      });
+
+    event.preventDefault();
+  }
+
+  // Handling Signup
+  signUpSubmit(event) {
+    fetch("http://localhost:117/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        password: this.state.password,
+        user: this.state.username
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          alert("We have a problem");
+        }
+      })
+      .then(function(myJson) {
+        alert(myJson);
+      });
+
+    event.preventDefault();
+  }
+
+  // Input change to handle form changes
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   handleLogoClick = () => {
@@ -150,7 +218,6 @@ class App extends Component {
   handleProfileMenuButtonClick(e) {
     this.toggleProfileMenu();
 
-    console.log("Profile clicked");
     e.stopPropagation();
   }
 
@@ -179,6 +246,7 @@ class App extends Component {
             handleShoppingCartButtonClick={this.handleShoppingCartButtonClick}
             handleBurgerButtonClick={this.handleBurgerButtonClick}
             handleLogoClick={this.handleLogoClick}
+            username={this.state.loggedUser}
           />
           <div className="App-intro">
             <CategoriesMenu
@@ -188,6 +256,9 @@ class App extends Component {
             <ProfileMenu
               handleMouseDown={this.handleProfileMenuButtonClick}
               menuVisibility={this.state.profileMenuVisible}
+              handleInputChange={this.handleInputChange}
+              handleLoginSubmit={this.handleLoginSubmit}
+              signUpSubmit={this.signUpSubmit}
             />
             <ShoppingCartSlider
               handleMouseDown={this.handleShoppingCartButtonClick}
