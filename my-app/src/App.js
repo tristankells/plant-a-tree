@@ -33,7 +33,7 @@ class App extends Component {
       profileMenuVisible: false,
       backDropVisible: false,
       view: 1,
-      loggedUser: 'tuck',
+      loggedUser: '',
       // Variables related to Profile Menu
       username: '',
       password: '',
@@ -66,12 +66,15 @@ class App extends Component {
       }
     }).then(response =>{
       if (response.ok) {
+        this.state.loggedUser = this.state.username;
         return response.json();
       } else {
-        alert("We have a problem");
+        alert("Incorrect login details");
       }
     }).then(function(myJson){
-      alert(myJson);
+      if(myJson){
+        alert(myJson);
+      }
     });
 
      
@@ -280,6 +283,7 @@ class App extends Component {
               render={() => (
                 <ShippingForm>
                   <Link to="/payment">Go to Payment Detials</Link>{" "}
+                  <Link to="/">Go back to shop</Link>{" "}
                 </ShippingForm>
               )}
             />
