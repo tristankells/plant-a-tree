@@ -10,8 +10,8 @@ import Backdrop from "./components/Backdrop/Backdrop";
 import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
 // import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 // import Product from "./components/ProductShelf/Product";
-import CreditCardForm from "./components/ProcessPayment/CreditCardForm";
-import ShippingForm from "./components/ProcessPayment/ShippingForm";
+import CreditCardView from "./components/PaymentView/PaymentView";
+import ShippingView from "./components/ShippingView/ShippingView";
 // import route Components here
 import {
   BrowserRouter as Router,
@@ -32,7 +32,9 @@ class App extends Component {
       leftSliderMenuVisible: false,
       profileMenuVisible: false,
       backDropVisible: false,
-      view: 1
+      view: 1,
+      address: {},
+      creditCard: {}
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this
@@ -48,7 +50,19 @@ class App extends Component {
 
   handleLogoClick = () => {
     this.setState({
-      redirect: true
+      mainPageRedirect: true
+    });
+  };
+
+  handleShippingSubmit = () => {
+    this.setState({
+      paymentRedirect: true
+    });
+  };
+
+  handleAddressUpdate = address => {
+    this.setState({
+      address: address
     });
   };
 
@@ -152,8 +166,10 @@ class App extends Component {
 
   render() {
     let redirect = <div />;
-    if (this.state.redirect) {
+    if (this.state.mainPageRedirect) {
       redirect = <Redirect push to="/" />;
+    } else if (this.state.paymentRedirect) {
+      redirect = <Redirect push to="/payment" />;
     }
     return (
       <Router>
@@ -206,12 +222,35 @@ class App extends Component {
               exact
               path="/shipping"
               render={() => (
-                <ShippingForm>
-                  <Link to="/payment">Go to Payment Detials</Link>{" "}
-                </ShippingForm>
+                <ShippingView
+                  handleShippingSubmit={this.handleShippingSubmit}
+                  handleAddressUpdate={this.handleAddressUpdate}
+                />
               )}
             />
-            <Route exact path="/payment" render={() => <CreditCardForm />} />
+            <Route
+              exact
+              path="/payment"
+              render={() => (
+                <CreditCardView
+                  shoppingCart={this.state.shoppingCart}
+                  address={this.state.address}
+                  creditCard={this.state.creditCard}
+                >
+                  <ShoppingCart
+                    shoppingCartItems={this.state.shoppingCart}
+                    handleRemoveItemClick={index =>
+                      this.removeItemFromShoppingCart(index)
+                    }
+                    handleAddItemClick={product =>
+                      this.addItemToShoppingCart(product)
+                    }
+                    handlePurchaseBtnClick={this.navToShippingView}
+                    address={this.state.address}
+                  />
+                </CreditCardView>
+              )}
+            />
             <Backdrop backDropVisibility={this.state.backDropVisible} />
           </div>
         </div>
