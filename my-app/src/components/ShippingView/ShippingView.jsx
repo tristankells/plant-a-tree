@@ -7,7 +7,10 @@ class ShippingView extends Component {
     return (
       <div className="shipping-view-div">
         <h2>PLEASE ENTER YOUR SHIPPING INFORMATION</h2>
-        <ShippingForm handleAddressUpdate={this.props.handleAddressUpdate} handleShippingSubmit={this.props.handleShippingSubmit} />
+        <ShippingForm
+          handleAddressUpdate={this.props.handleAddressUpdate}
+          handleShippingSubmit={this.props.handleShippingSubmit}
+        />
       </div>
     );
   }

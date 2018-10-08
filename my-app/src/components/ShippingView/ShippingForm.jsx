@@ -6,7 +6,7 @@ class ShippingForm extends Component {
     super(props);
     this.state = {
       fullName: "",
-      steet: "",
+      street: "",
       suburbTown: "",
       city: "",
       postcode: ""
@@ -25,7 +25,7 @@ class ShippingForm extends Component {
   }
 
   handleStreetChange(event) {
-    this.setState({ steet: event.target.value });
+    this.setState({ street: event.target.value });
   }
 
   handleSuburbTownChange(event) {
@@ -43,7 +43,7 @@ class ShippingForm extends Component {
   handleSubmit(event) {
     if (
       this.state.fullName.length === 0 ||
-      this.state.steet.length === 0 ||
+      this.state.street.length === 0 ||
       this.state.suburbTown.length === 0 ||
       this.state.city.length === 0 ||
       this.state.postcode.length === 0
@@ -52,7 +52,7 @@ class ShippingForm extends Component {
     } else {
       this.props.handleAddressUpdate({
         fullName: this.state.fullName,
-        steet: this.state.steet,
+        street: this.state.street,
         suburbTown: this.state.suburbTown,
         city: this.state.city,
         postcode: this.state.postcode
@@ -65,39 +65,41 @@ class ShippingForm extends Component {
     return (
       <div>
         <Button>RETURN TO STORE</Button>
-        <form className="shipping-form" onSubmit={this.handleSubmit}>
-          <span>Full Name:</span>
-          <input
-            type="text"
-            value={this.state.fullName}
-            onChange={this.handleNameChange}
-          />
-          <span>Street No & Name:</span>
-          <input
-            type="text"
-            value={this.state.steet}
-            onChange={this.handleStreetChange}
-          />
-          <span>Suburb / Town:</span>
-          <input
-            type="text"
-            value={this.state.suburbTown}
-            onChange={this.handleSuburbTownChange}
-          />
-          <span>City:</span>
-          <input
-            type="text"
-            value={this.state.city}
-            onChange={this.handleCityChange}
-          />
-          <span>Postcode:</span>
-          <input
-            type="text"
-            value={this.state.postcode}
-            onChange={this.handlePostcodeChange}
-          />
-          <input type="submit" value="Submit" />
-        </form>
+        <div className="raisedbox">
+          <form className="shipping-form" onSubmit={this.handleSubmit}>
+            <span>Full Name:</span>
+            <input
+              type="text"
+              value={this.state.fullName}
+              onChange={this.handleNameChange}
+            />
+            <span>Street No & Name:</span>
+            <input
+              type="text"
+              value={this.state.street}
+              onChange={this.handleStreetChange}
+            />
+            <span>Suburb / Town:</span>
+            <input
+              type="text"
+              value={this.state.suburbTown}
+              onChange={this.handleSuburbTownChange}
+            />
+            <span>City:</span>
+            <input
+              type="text"
+              value={this.state.city}
+              onChange={this.handleCityChange}
+            />
+            <span>Postcode:</span>
+            <input
+              type="text"
+              value={this.state.postcode}
+              onChange={this.handlePostcodeChange}
+            />
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
       </div>
     );
   }

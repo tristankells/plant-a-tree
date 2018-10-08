@@ -7,7 +7,8 @@ class CreditCardForm extends Component {
       name: "",
       cardNumber: "",
       month: 1,
-      year: 2018
+      year: 2018,
+      cvc: ""
     };
   }
 
@@ -28,16 +29,17 @@ class CreditCardForm extends Component {
   };
 
   handleCVCChange = event => {
-    this.setState({ year: event.target.value });
+    this.setState({ cvc: event.target.value });
   };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
+    event.preventDefault();
     if (
-      this.state.fullName.length === 0 ||
-      this.state.steet.length === 0 ||
-      this.state.suburbTown.length === 0 ||
-      this.state.city.length === 0 ||
-      this.state.postcode.length === 0
+      this.state.name.length === 0 ||
+      this.state.cardNumber.length === 0 ||
+      this.state.month.length === 0 ||
+      this.state.year.length === 0 ||
+      this.state.cvc.length === 0
     ) {
       alert("Please fill all fields");
     } else {
@@ -50,30 +52,24 @@ class CreditCardForm extends Component {
       });
       this.props.handleShippingSubmit();
     }
-    event.preventDefault();
-  }
+  };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>Name on card </label>
-        <br />
-        <input
-          type="text"
-          value={this.state.value}
-          onChange={this.handleNameChange}
-        />
-        <br />
-        <label>Card number</label>
-
-        <input
-          type="text"
-          value={this.state.value}
-          onChange={this.handleCardNumberChange}
-        />
-
-        <label>
-          Expiration date
-          <br />
+      <div class="raisedbox">
+        <div>Name on Card:</div>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            value={this.state.value}
+            onChange={this.handleNameChange}
+          />
+          <div>Card Number:</div>
+          <input
+            type="text"
+            value={this.state.value}
+            onChange={this.handleCardNumberChange}
+          />
+          <div>Expiration Date:</div>
           <select value={this.state.month} onChange={this.handleMonthChange}>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -99,18 +95,16 @@ class CreditCardForm extends Component {
             <option value="2025">2025</option>
             <option value="2026">2026</option>
           </select>
-        </label>
-        <label>
-          CVC
-          <br />
+          <div>CVC</div>
           <input
             type="text"
             value={this.state.cvc}
             onChange={this.handleCardNumberChange}
           />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 }
