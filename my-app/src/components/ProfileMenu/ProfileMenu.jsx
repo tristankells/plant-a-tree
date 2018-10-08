@@ -3,52 +3,7 @@ import "./ProfileMenu.css";
 import ClearIcon from "@material-ui/icons/Clear";
 import Button from "@material-ui/core/Button";
 
-const API = 'https://dog.ceo/api/breed/shiba/images/random';
-
-export default class ProfileMenu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isGoing: '',
-      numberOfGuests: ''
-    };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit =  this.handleSubmit.bind(this);
-    this.signUpSubmit = this.signUpSubmit.bind(this);
-  }
-
-  handleSubmit(event) {
-    alert('Username entered: ' + this.state.isGoing + ", Password Entered: "+this.state.numberOfGuests);
-    fetch(API)
-    .then(response =>{
-      if (response.ok) {
-        console.log(response.json());
-        return response.json();
-      } else {
-        throw new Error('Something went wrong with the API call');
-      }
-    })
-    
-    event.preventDefault();
-  }
-
-  signUpSubmit(event) {
-    alert('Call Sign Up');
-    event.preventDefault();
-  }
-
-  // Input change to handle form changes
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
-  }
-
+class ProfileMenu extends Component {
   render() {
     var visibility = "hide";
 
@@ -65,46 +20,46 @@ export default class ProfileMenu extends Component {
 
         <div className="login-section__header"><b>Login:</b></div>
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.props.handleLoginSubmit}>
           <label>
           Username:
             <input
-              name="isGoing"
+              name="username"
               type="text"
-              checked={this.state.isGoing}
-              onChange={this.handleInputChange} />
+              checked={this.props.username}
+              onChange={this.props.handleInputChange} />
           </label>
           <br/>
           <label>
             Password:
             <input
-              name="numberOfGuests"
+              name="password"
               type="password"
-              value={this.state.numberOfGuests}
-              onChange={this.handleInputChange} />
+              value={this.props.password}
+              onChange={this.props.handleInputChange} />
           </label><br/>
           <button className="submit-button" type="submit" value="Log In">Submit</button>
         </form>
 
         <div className="signup-section__header"><b>New?</b> Sign-up here:</div>
 
-        <form onSubmit={this.signUpSubmit}>
+        <form onSubmit={this.props.signUpSubmit}>
           <label>
           Username:
             <input
-              name="isGoing"
+              name="username"
               type="text"
-              checked={this.state.isGoing}
-              onChange={this.handleInputChange} />
+              checked={this.props.username}
+              onChange={this.props.handleInputChange} />
           </label>
           <br/>
           <label>
             Password:
             <input
-              name="numberOfGuests"
+              name="password"
               type="password"
-              value={this.state.numberOfGuests}
-              onChange={this.handleInputChange} />
+              value={this.props.password}
+              onChange={this.props.handleInputChange} />
           </label>
           <br/>
           <button className="submit-button" type="submit" value="Sign Up">Submit</button>
@@ -114,3 +69,4 @@ export default class ProfileMenu extends Component {
     );
   }
 }
+export default ProfileMenu;

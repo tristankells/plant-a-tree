@@ -33,6 +33,9 @@ class Navbar extends Component {
               <img onMouseDown={this.props.handleLogoCLick} alt="" src={PatLogoText} className="navbar__logo" />
             </a>
           </div>
+          <div >
+            <p>{this.props.username}</p>
+          </div>
           <div className="navbar__links">
             <ul>
               <li>
