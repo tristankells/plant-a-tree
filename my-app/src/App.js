@@ -33,13 +33,15 @@ class App extends Component {
       profileMenuVisible: false,
       backDropVisible: false,
       view: 1,
-      loggedUser: '',
+      loggedUser: "",
       // Variables related to Profile Menu
-      username: '',
-      password: '',
+      username: "",
+      password: "",
       // Variables related to Shipping Page
       address: {},
       creditCard: {},
+      //Variables related to product filter
+      searchSize: "small"
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this
@@ -62,9 +64,15 @@ class App extends Component {
   }
 
   // Functions related to Shipping Page
-  handleAddressSubmit(){
+  handleAddressSubmit() {
     alert("Works");
   }
+
+  updateSearchSize = searchSize => {
+    this.setState({
+      searchSize: searchSize
+    });
+  };
 
   // Functions related to Profile Menu
   handleLoginSubmit(event) {
@@ -75,18 +83,20 @@ class App extends Component {
         "Content-Type": "application/x-www-form-urlencoded",
         password: this.state.password
       }
-    }).then(response =>{
-      if (response.ok) {
-        this.state.loggedUser = this.state.username;
-        return response.json();
-      } else {
-        alert("Incorrect login details");
-      }
-    }).then(function(myJson){
-      if(myJson){
-        alert(myJson);
-      }
-    });
+    })
+      .then(response => {
+        if (response.ok) {
+          this.state.loggedUser = this.state.username;
+          return response.json();
+        } else {
+          alert("Incorrect login details");
+        }
+      })
+      .then(function(myJson) {
+        if (myJson) {
+          alert(myJson);
+        }
+      });
 
     event.preventDefault();
   }
@@ -260,6 +270,8 @@ class App extends Component {
             <CategoriesMenu
               handleMouseDown={this.handleBurgerButtonClick}
               menuVisibility={this.state.leftSliderMenuVisible}
+              updateSearchSize={this.updateSearchSize}
+              searchSize={this.state.searchSize}
             />
             <ProfileMenu
               handleMouseDown={this.handleProfileMenuButtonClick}
@@ -290,6 +302,7 @@ class App extends Component {
               path="/"
               render={() => (
                 <ProductList
+                  searchSize={this.state.searchSize}
                   handleAddItemClick={product =>
                     this.addItemToShoppingCart(product)
                   }
