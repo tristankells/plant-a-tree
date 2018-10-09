@@ -10,49 +10,68 @@ class ProductList extends Component {
         price: 100.0,
         quantity: 1,
         size: "small",
-        img: "/img/birch-trees.jpg"
+        img: "/img/birch-trees.jpg",
+        type: "tree"
       },
       {
         name: "Red Wood",
         price: 20.0,
         quantity: 1,
         size: "small",
-        img: "/img/red-wood.jpg"
+        img: "/img/red-wood.jpg",
+        type: "tree"
       },
       {
         name: "Palm",
         price: 80.0,
         quantity: 1,
         size: "small",
-        img: "/img/palm-tree.jpg"
+        img: "/img/palm-tree.jpg",
+        type: "tree"
       },
       {
         name: "Pine",
         price: 80.0,
         quantity: 1,
         size: "medium",
-        img: "/img/pine.jpg"
+        img: "/img/pine.jpg",
+        type: "tree"
       },
       {
         name: "Oak",
         price: 80.0,
         quantity: 1,
         size: "medium",
-        img: "/img/tree.jpg"
+        img: "/img/tree.jpg",
+        type: "tree"
       },
       {
-        name: "Ash",
-        price: 80.0,
+        name: "Shears",
+        price: 10.0,
         quantity: 1,
-        size: "medium",
-        img: "/img/tree.jpg"
+        img: "/img/shears.jpg",
+        type: "tools"
       },
       {
-        name: "Maple",
-        price: 80.0,
+        name: "Shovel",
+        price: 20.0,
         quantity: 1,
-        size: "large",
-        img: "/img/tree.jpg"
+        img: "/img/shovel.jpg",
+        type: "tools"
+      },
+      {
+        name: "Brown Pot",
+        price: 10.0,
+        quantity: 1,
+        img: "/img/brown-pot.jpg",
+        type: "pots"
+      },
+      {
+        name: "Black Pot",
+        price: 15.0,
+        quantity: 1,
+        img: "/img/black-pot.jpg",
+        type: "pots"
       }
     ]
   };
