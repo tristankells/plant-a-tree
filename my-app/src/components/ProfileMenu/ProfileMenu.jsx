@@ -18,9 +18,8 @@ class ProfileMenu extends Component {
 
         <div className="account-section__header">ACCOUNT</div>
 
-        <div className="login-section__header"><b>Login:</b></div>
+        <div className="login-section__header"><b>Login / Signup</b></div>
 
-        <form onSubmit={this.props.handleLoginSubmit}>
           <label>
           Username:
             <input
@@ -38,32 +37,8 @@ class ProfileMenu extends Component {
               value={this.props.password}
               onChange={this.props.handleInputChange} />
           </label><br/>
-          <button className="submit-button" type="submit" value="Log In">Submit</button>
-        </form>
-
-        <div className="signup-section__header"><b>New?</b> Sign-up here:</div>
-
-        <form onSubmit={this.props.signUpSubmit}>
-          <label>
-          Username:
-            <input
-              name="username"
-              type="text"
-              checked={this.props.username}
-              onChange={this.props.handleInputChange} />
-          </label>
-          <br/>
-          <label>
-            Password:
-            <input
-              name="password"
-              type="password"
-              value={this.props.password}
-              onChange={this.props.handleInputChange} />
-          </label>
-          <br/>
-          <button className="submit-button" type="submit" value="Sign Up">Submit</button>
-        </form>
+          <button className="profile-submit-button" type="submit" value="Log In" onClick={this.props.handleLoginSubmit}>Log In</button>
+          <button className="profile-submit-button" type="submit" value="Sign Up" onClick={this.props.signUpSubmit}>Sign Up</button>
         
       </div>
     );
