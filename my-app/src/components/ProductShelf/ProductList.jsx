@@ -19,6 +19,26 @@ class ProductList extends Component {
         name: "Palm",
         price: 80.0,
         quantity: 1
+      },
+      {
+        name: "Pine",
+        price: 80.0,
+        quantity: 1
+      },
+      {
+        name: "Oak",
+        price: 80.0,
+        quantity: 1
+      },
+      {
+        name: "Ash",
+        price: 80.0,
+        quantity: 1
+      },
+      {
+        name: "Maple",
+        price: 80.0,
+        quantity: 1
       }
     ]
   };
@@ -26,7 +46,6 @@ class ProductList extends Component {
     return (
       <div className="productlist__container">
         {this.state.products.map((product, i) => {
-        
           return (
             <Product
               product={product}
