@@ -22,10 +22,10 @@ var routes = function (){
                     if(bcrypt.compareSync(req.headers.password, results[0].hash) == true){
                         res.status(200).json("You have successfully logged in, welcome back: "+req.params.user);
                     }else{
-                        res.status(200).json("Incorrect login");
+                        res.status(418).json("Incorrect login");
                     }  
                 } catch (error) {
-                    res.status(200).json("Incorrect login");
+                    res.status(418).json("Incorrect login");
                 }      
             });
         });

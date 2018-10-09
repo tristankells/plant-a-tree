@@ -8,7 +8,7 @@ import ShoppingCartSlider from "./components/ShoppingCart/ShoppingCartSlider";
 import CategoriesMenu from "./components/CategoriesMenu/CategoriesMenu";
 import Backdrop from "./components/Backdrop/Backdrop";
 import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
-// import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
+import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 // import Product from "./components/ProductShelf/Product";
 import CreditCardView from "./components/PaymentView/PaymentView";
 import ShippingView from "./components/ShippingView/ShippingView";
@@ -33,12 +33,13 @@ class App extends Component {
       profileMenuVisible: false,
       backDropVisible: false,
       view: 1,
+      loggedUser: '',
+      // Variables related to Profile Menu
+      username: '',
+      password: '',
+      // Variables related to Shipping Page
       address: {},
       creditCard: {},
-      loggedUser: "tuck",
-      // Variables related to Profile Menu
-      username: "",
-      password: ""
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this
@@ -55,6 +56,14 @@ class App extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.signUpSubmit = this.signUpSubmit.bind(this);
+
+    // Functions related to Shipping Page
+    this.handleAddressSubmit = this.handleAddressSubmit.bind(this);
+  }
+
+  // Functions related to Shipping Page
+  handleAddressSubmit(){
+    alert("Works");
   }
 
   // Functions related to Profile Menu
@@ -66,17 +75,18 @@ class App extends Component {
         "Content-Type": "application/x-www-form-urlencoded",
         password: this.state.password
       }
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          alert("We have a problem");
-        }
-      })
-      .then(function(myJson) {
+    }).then(response =>{
+      if (response.ok) {
+        this.state.loggedUser = this.state.username;
+        return response.json();
+      } else {
+        alert("Incorrect login details");
+      }
+    }).then(function(myJson){
+      if(myJson){
         alert(myJson);
-      });
+      }
+    });
 
     event.preventDefault();
   }
