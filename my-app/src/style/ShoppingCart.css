@@ -1,9 +1,14 @@
 #shoppingCart {
-    max-width: 500px;
-    margin: 5%;
-    padding: 15px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    text-align: right;
-  }
-  
+  max-width: 500px;
+  margin: 5%;
+  padding: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  text-align: right;
+  overflow: auto;
+  height: 65%;
+}
+
+#shoppingCartSlider{
+  height: 80%;
+}

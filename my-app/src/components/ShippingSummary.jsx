@@ -5,10 +5,10 @@ function ShippingSummary(props) {
   console.log(address);
   return (
     <div>
-      <label>Shipping Address</label>
-      <span>
-        {address.street},{address.suburbTown},{address.city},{address.postcode}
-      </span>
+      <span className="bold-underline">Shipping Address:</span>
+      <div>
+        {address.street}, {address.suburbTown}, {address.city}, {address.postcode}
+      </div>
     </div>
   );
 }
