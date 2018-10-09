@@ -41,7 +41,7 @@ class App extends Component {
       address: {},
       creditCard: {},
       //Variables related to product filter
-      searchSize: "small"
+      searchSize: "all"
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this

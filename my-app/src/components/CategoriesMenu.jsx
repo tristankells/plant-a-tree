@@ -20,6 +20,7 @@ export default class CategoriesMenu extends Component {
           onMouseDown={this.props.handleMouseDown}
         />
         <select value={this.props.searchSize} onChange={this.handleSizeChange}>
+        <option value="all">all</option>
           <option value="small">small</option>
           <option value="medium">medium</option>
           <option value="large">large</option>
