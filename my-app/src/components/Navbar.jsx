@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./Navbar.css";
+import "../style/Navbar.css";
 
 //Import icons
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -9,7 +9,7 @@ import Menu from "@material-ui/icons/Menu";
 import { Redirect } from "react-router";
 
 //Import images
-import PatLogoText from "../../textlogo.png";
+import PatLogoText from "../resources/images/textlogo.png";
 
 //Main Navbar component
 class Navbar extends Component {

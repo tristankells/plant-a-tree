@@ -10,6 +10,7 @@
     "gifsicle": "^3.0.4",
     "jquery": "^3.3.1",
     "react": "^16.5.2",
+    "react-bootstrap": "^0.32.4",
     "react-credit-card-input": "^1.0.15",
     "react-creditcard": "^1.1.2",
     "react-dom": "^16.5.2",

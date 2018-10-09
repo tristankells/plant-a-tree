@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./css/ShoppingCartItem.css";
-import tree from "../../tree.jpg";
+import "../style/ShoppingCartItem.css";
+import tree from "../resources/images/tree.jpg";
 import Button from "@material-ui/core/Button";
 import Remove from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./css/ShoppingCartSlider.css";
+import "../style/ShoppingCartSlider.css";
 import ClearIcon from "@material-ui/icons/Clear";
 
 export default class ShoppingCartSlider extends Component {

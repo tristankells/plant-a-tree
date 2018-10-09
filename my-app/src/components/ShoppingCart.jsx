@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./css/ShoppingCart.css";
+import "../style/ShoppingCart.css";
 import ShoppingCartItem from "./ShoppingCartItem";
 import { Button } from "@material-ui/core";
 
