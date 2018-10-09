@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./CategoriesMenu.css";
+import "../style/CategoriesMenu.css";
 import ClearIcon from "@material-ui/icons/Clear";
 
 export default class CategoriesMenu extends Component {

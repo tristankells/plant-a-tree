@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import "./App.css";
-import "./ProductList.css";
-import ProductList from "./components/ProductShelf/ProductList";
-import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
-import Navbar from "./components/TopNavbar/Navbar";
-import ShoppingCartSlider from "./components/ShoppingCart/ShoppingCartSlider";
-import CategoriesMenu from "./components/CategoriesMenu/CategoriesMenu";
-import Backdrop from "./components/Backdrop/Backdrop";
-import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
-import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
+import "./style/App.css";
+import "./style/ProductList.css";
+import ProductList from "./components/ProductList";
+import ShoppingCart from "./components/ShoppingCart";
+import Navbar from "./components/Navbar";
+import ShoppingCartSlider from "./components/ShoppingCartSlider";
+import CategoriesMenu from "./components/CategoriesMenu";
+import Backdrop from "./components/Backdrop";
+import ProfileMenu from "./components/ProfileMenu";
+import ProductCarousel from "./components/ProductCarousel";
 // import Product from "./components/ProductShelf/Product";
-import CreditCardView from "./components/PaymentView/PaymentView";
-import ShippingView from "./components/ShippingView/ShippingView";
+import CreditCardView from "./components/PaymentView";
+import ShippingView from "./components/ShippingView";
 // import route Components here
 import {
   BrowserRouter as Router,
