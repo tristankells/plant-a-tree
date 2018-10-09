@@ -10,6 +10,7 @@ class CreditCardView extends Component {
         <h1>Payment</h1>
         <h2 className="bold-underline">Order Summary</h2>
         <div className="raisedbox">
+          <span className="bold-underline">Shopping Cart:</span>
           {this.props.children}
           <ShippingSummary address={this.props.address} />
         </div>
