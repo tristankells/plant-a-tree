@@ -1,28 +1,37 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom'
 import "./css/ShippingForm.css";
 
 class ShippingForm extends Component {
-  state = {};
+  state = {
+    redirect: false
+  }
+
+  setRedirect = () => {
+    alert("Bringing you through to the payment section");
+    this.setState({
+      redirect: true
+    })
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/payment' />
+    }
+  }
+
   render() {
     return (
       <div>
-        <h2>PLEASE ENTER YOUR SHIPPING INFORMATION</h2>
+        <br/>
+        <h2 className="title">PLEASE ENTER YOUR SHIPPING INFORMATION</h2>
         <form id="shippingForm" action="">
-          <label htmlFor="fullNameIn">Full Name:</label>
-          <input id="fullNameIn" type="text" />
-          <label htmlFor="adressLine1In">Adress Line 1:</label>
-          <input id="adressLine1In" type="text" />
-          <label htmlFor="adressLine2In">Adress Line 2:</label>
-          <input id="adressLine2In" type="text" />
-          <label htmlFor="cityIn">City:</label>
-          <input id="cityIn" type="text" />
-          <label htmlFor="regionIn">Region:</label>
-          <input id="regionIn" type="text" />
-          <label htmlFor="zipIn">ZIP:</label>
-          <input id="zipIn" type="text" />
-          <label htmlFor="phoneNumberIn">Phone Number:</label>
-          <input id="phoneNumberIn" type="text" />
+          <label htmlFor="address">Delivery address:</label>
+          <input className="address-input" id="address" type="text"
+              onChange={this.props.handleInputChange} placeholder={this.props.address}/>
           <br />
+          {this.renderRedirect()}
+          <button className="submit-button" type="submit" value="Address Submit" onClick={this.setRedirect}>Continue</button>
         </form>
         {this.props.children}
       </div>

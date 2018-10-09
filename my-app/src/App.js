@@ -37,6 +37,8 @@ class App extends Component {
       // Variables related to Profile Menu
       username: '',
       password: '',
+      // Variables related to Shipping Page
+      address: '0-999 Sesame Street, Auckland, 1052',
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this
@@ -53,6 +55,14 @@ class App extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleLoginSubmit =  this.handleLoginSubmit.bind(this);
     this.signUpSubmit = this.signUpSubmit.bind(this);
+
+    // Functions related to Shipping Page
+    this.handleAddressSubmit = this.handleAddressSubmit.bind(this);
+  }
+
+  // Functions related to Shipping Page
+  handleAddressSubmit(){
+    alert("Works");
   }
 
   // Functions related to Profile Menu
@@ -281,8 +291,9 @@ class App extends Component {
               exact
               path="/shipping"
               render={() => (
-                <ShippingForm>
-                  <Link to="/payment">Go to Payment Detials</Link>{" "}
+                <ShippingForm 
+                  address={this.state.address}
+                  handleAddressSubmit={this.handleAddressSubmit}>
                   <Link to="/">Go back to shop</Link>{" "}
                 </ShippingForm>
               )}
