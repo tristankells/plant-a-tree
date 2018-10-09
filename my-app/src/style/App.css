@@ -30,9 +30,9 @@
 /* Adds raised 3D effect to div */
 .raisedbox {
   margin: 3% 10%;
-  border: 1px solid #b1d8b4;
-  box-shadow: -1px 1px #b1d8b4, -2px 2px #b1d8b4, -3px 3px #b1d8b4,
-    -4px 4px #b1d8b4, -5px 5px #b1d8b4;
+  border: 1px solid #d6dbd6;
+  box-shadow: -1px 1px #d6dbd6, -2px 2px #d6dbd6, -3px 3px #d6dbd6,
+    -4px 4px #d6dbd6, -5px 5px #d6dbd6;
 }
 
 .raisedbox > input {

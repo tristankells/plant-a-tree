@@ -15,7 +15,7 @@ class ShoppingCartItem extends Component {
         <div>
           <b>------</b>
         </div>
-        <img className="ShoppingCartItemsImage" src={tree} alt="" />
+        <img className="ShoppingCartItemsImage" src={window.location.origin + item.img} alt="" />
         <div>
           <b>Name: &nbsp;</b>
           {item.name}
