@@ -303,13 +303,6 @@ class App extends Component {
               exact
               path="/shipping"
               render={() => (
-<<<<<<< HEAD
-                <ShippingForm 
-                  address={this.state.address}
-                  handleAddressSubmit={this.handleAddressSubmit}>
-                  <Link to="/">Go back to shop</Link>{" "}
-                </ShippingForm>
-=======
                 <ShippingView
                   handleShippingSubmit={this.handleShippingSubmit}
                   handleAddressUpdate={this.handleAddressUpdate}
@@ -337,7 +330,6 @@ class App extends Component {
                     address={this.state.address}
                   />
                 </CreditCardView>
->>>>>>> e7ef18ade97bdc3aefc84df3136bf7627746025b
               )}
             />
             <Backdrop backDropVisibility={this.state.backDropVisible} />
