@@ -8,7 +8,7 @@ import ShoppingCartSlider from "./components/ShoppingCart/ShoppingCartSlider";
 import CategoriesMenu from "./components/CategoriesMenu/CategoriesMenu";
 import Backdrop from "./components/Backdrop/Backdrop";
 import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
-// import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
+import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 // import Product from "./components/ProductShelf/Product";
 import CreditCardForm from "./components/ProcessPayment/CreditCardForm";
 import ShippingForm from "./components/ProcessPayment/ShippingForm";
@@ -165,6 +165,7 @@ class App extends Component {
             handleLogoClick={this.handleLogoClick}
           />
           <div className="App-intro">
+            <ProductCarousel />
             <CategoriesMenu
               handleMouseDown={this.handleBurgerButtonClick}
               menuVisibility={this.state.leftSliderMenuVisible}
