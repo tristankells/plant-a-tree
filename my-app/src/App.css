@@ -7,9 +7,17 @@
   align-items: center;
 }
 
-.outer-container{
+.outer-container {
   height: 100%;
   padding: 0;
   margin: 0;
 }
 
+.shipping-form {
+}
+
+.shipping-form > input {
+  display: block;
+  font-size: 120%;
+  margin: 0 auto;
+}

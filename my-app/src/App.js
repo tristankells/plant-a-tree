@@ -10,8 +10,8 @@ import Backdrop from "./components/Backdrop/Backdrop";
 import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
 import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 // import Product from "./components/ProductShelf/Product";
-import CreditCardForm from "./components/ProcessPayment/CreditCardForm";
-import ShippingForm from "./components/ProcessPayment/ShippingForm";
+import CreditCardView from "./components/PaymentView/PaymentView";
+import ShippingView from "./components/ShippingView/ShippingView";
 // import route Components here
 import {
   BrowserRouter as Router,
@@ -32,7 +32,13 @@ class App extends Component {
       leftSliderMenuVisible: false,
       profileMenuVisible: false,
       backDropVisible: false,
-      view: 1
+      view: 1,
+      address: {},
+      creditCard: {},
+      loggedUser: "tuck",
+      // Variables related to Profile Menu
+      username: "",
+      password: ""
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this
@@ -44,11 +50,87 @@ class App extends Component {
     this.handleBurgerButtonClick = this.handleBurgerButtonClick.bind(this);
     this.toggleLeftSliderMenu = this.toggleLeftSliderMenu.bind(this);
     this.toggleProfileMenu = this.toggleProfileMenu.bind(this);
+
+    // Functions related to Profile Menu
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.signUpSubmit = this.signUpSubmit.bind(this);
+  }
+
+  // Functions related to Profile Menu
+  handleLoginSubmit(event) {
+    var auth = false;
+    fetch("http://localhost:117/auth/login/" + this.state.username, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        password: this.state.password
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          alert("We have a problem");
+        }
+      })
+      .then(function(myJson) {
+        alert(myJson);
+      });
+
+    event.preventDefault();
+  }
+
+  // Handling Signup
+  signUpSubmit(event) {
+    fetch("http://localhost:117/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        password: this.state.password,
+        user: this.state.username
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          alert("We have a problem");
+        }
+      })
+      .then(function(myJson) {
+        alert(myJson);
+      });
+
+    event.preventDefault();
+  }
+
+  // Input change to handle form changes
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   handleLogoClick = () => {
     this.setState({
-      redirect: true
+      mainPageRedirect: true
+    });
+  };
+
+  handleShippingSubmit = () => {
+    this.setState({
+      paymentRedirect: true
+    });
+  };
+
+  handleAddressUpdate = address => {
+    this.setState({
+      address: address
     });
   };
 
@@ -136,7 +218,6 @@ class App extends Component {
   handleProfileMenuButtonClick(e) {
     this.toggleProfileMenu();
 
-    console.log("Profile clicked");
     e.stopPropagation();
   }
 
@@ -152,8 +233,10 @@ class App extends Component {
 
   render() {
     let redirect = <div />;
-    if (this.state.redirect) {
+    if (this.state.mainPageRedirect) {
       redirect = <Redirect push to="/" />;
+    } else if (this.state.paymentRedirect) {
+      redirect = <Redirect push to="/payment" />;
     }
     return (
       <Router>
@@ -163,6 +246,7 @@ class App extends Component {
             handleShoppingCartButtonClick={this.handleShoppingCartButtonClick}
             handleBurgerButtonClick={this.handleBurgerButtonClick}
             handleLogoClick={this.handleLogoClick}
+            username={this.state.loggedUser}
           />
           <div className="App-intro">
             <ProductCarousel />
@@ -173,6 +257,9 @@ class App extends Component {
             <ProfileMenu
               handleMouseDown={this.handleProfileMenuButtonClick}
               menuVisibility={this.state.profileMenuVisible}
+              handleInputChange={this.handleInputChange}
+              handleLoginSubmit={this.handleLoginSubmit}
+              signUpSubmit={this.signUpSubmit}
             />
             <ShoppingCartSlider
               handleMouseDown={this.handleShoppingCartButtonClick}
@@ -207,12 +294,35 @@ class App extends Component {
               exact
               path="/shipping"
               render={() => (
-                <ShippingForm>
-                  <Link to="/payment">Go to Payment Detials</Link>{" "}
-                </ShippingForm>
+                <ShippingView
+                  handleShippingSubmit={this.handleShippingSubmit}
+                  handleAddressUpdate={this.handleAddressUpdate}
+                />
               )}
             />
-            <Route exact path="/payment" render={() => <CreditCardForm />} />
+            <Route
+              exact
+              path="/payment"
+              render={() => (
+                <CreditCardView
+                  shoppingCart={this.state.shoppingCart}
+                  address={this.state.address}
+                  creditCard={this.state.creditCard}
+                >
+                  <ShoppingCart
+                    shoppingCartItems={this.state.shoppingCart}
+                    handleRemoveItemClick={index =>
+                      this.removeItemFromShoppingCart(index)
+                    }
+                    handleAddItemClick={product =>
+                      this.addItemToShoppingCart(product)
+                    }
+                    handlePurchaseBtnClick={this.navToShippingView}
+                    address={this.state.address}
+                  />
+                </CreditCardView>
+              )}
+            />
             <Backdrop backDropVisibility={this.state.backDropVisible} />
           </div>
         </div>
