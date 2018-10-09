@@ -249,7 +249,6 @@ class App extends Component {
             username={this.state.loggedUser}
           />
           <div className="App-intro">
-            <ProductCarousel />
             <CategoriesMenu
               handleMouseDown={this.handleBurgerButtonClick}
               menuVisibility={this.state.leftSliderMenuVisible}
