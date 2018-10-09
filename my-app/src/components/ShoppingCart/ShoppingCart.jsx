@@ -21,18 +21,20 @@ class ShoppingCart extends Component {
   }
   render() {
     return (
-      <div id="shoppingCart">
-        {this.props.shoppingCartItems.map((item, index) => {
-          return (
-            <ShoppingCartItem
-              key={index}
-              index={index}
-              item={item}
-              handleRemoveItemClick={this.props.handleRemoveItemClick}
-              handleAddItemClick={this.props.handleAddItemClick}
-            />
-          );
-        })}
+      <div id="shoppingCartSlider">
+        <div id="shoppingCart">
+          {this.props.shoppingCartItems.map((item, index) => {
+            return (
+              <ShoppingCartItem
+                key={index}
+                index={index}
+                item={item}
+                handleRemoveItemClick={this.props.handleRemoveItemClick}
+                handleAddItemClick={this.props.handleAddItemClick}
+              />
+            );
+          })}
+        </div>
         <br />
         Number of items in cart: &nbsp; {this.props.shoppingCartItems.length}
         <br />
