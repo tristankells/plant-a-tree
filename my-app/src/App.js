@@ -10,8 +10,8 @@ import Backdrop from "./components/Backdrop/Backdrop";
 import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
 // import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 // import Product from "./components/ProductShelf/Product";
-import CreditCardForm from "./components/ProcessPayment/CreditCardForm";
-import ShippingForm from "./components/ProcessPayment/ShippingForm";
+import CreditCardView from "./components/PaymentView/PaymentView";
+import ShippingView from "./components/ShippingView/ShippingView";
 // import route Components here
 import {
   BrowserRouter as Router,
@@ -38,7 +38,8 @@ class App extends Component {
       username: '',
       password: '',
       // Variables related to Shipping Page
-      address: '0-999 Sesame Street, Auckland, 1052',
+      address: {},
+      creditCard: {},
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this
@@ -53,7 +54,7 @@ class App extends Component {
 
     // Functions related to Profile Menu
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleLoginSubmit =  this.handleLoginSubmit.bind(this);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.signUpSubmit = this.signUpSubmit.bind(this);
 
     // Functions related to Shipping Page
@@ -68,11 +69,11 @@ class App extends Component {
   // Functions related to Profile Menu
   handleLoginSubmit(event) {
     var auth = false;
-    fetch('http://localhost:117/auth/login/'+ this.state.username, {
-      method: 'POST',
+    fetch("http://localhost:117/auth/login/" + this.state.username, {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'password': this.state.password
+        "Content-Type": "application/x-www-form-urlencoded",
+        password: this.state.password
       }
     }).then(response =>{
       if (response.ok) {
@@ -87,39 +88,37 @@ class App extends Component {
       }
     });
 
-     
     event.preventDefault();
   }
 
   // Handling Signup
   signUpSubmit(event) {
-
-    fetch('http://localhost:117/auth/signup', {
-      method: 'POST',
+    fetch("http://localhost:117/auth/signup", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'password': this.state.password,
-        'user': this.state.username
+        "Content-Type": "application/x-www-form-urlencoded",
+        password: this.state.password,
+        user: this.state.username
       }
-    }).then(response =>{
-      if (response.ok) {
-        return response.json();
-      } else {
-        alert("We have a problem");
-      }
-    }).then(function(myJson){
-      alert(myJson);
-    });
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          alert("We have a problem");
+        }
+      })
+      .then(function(myJson) {
+        alert(myJson);
+      });
 
     event.preventDefault();
-
-    
   }
 
   // Input change to handle form changes
   handleInputChange(event) {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
 
     this.setState({
@@ -127,10 +126,21 @@ class App extends Component {
     });
   }
 
-
   handleLogoClick = () => {
     this.setState({
-      redirect: true
+      mainPageRedirect: true
+    });
+  };
+
+  handleShippingSubmit = () => {
+    this.setState({
+      paymentRedirect: true
+    });
+  };
+
+  handleAddressUpdate = address => {
+    this.setState({
+      address: address
     });
   };
 
@@ -233,8 +243,10 @@ class App extends Component {
 
   render() {
     let redirect = <div />;
-    if (this.state.redirect) {
+    if (this.state.mainPageRedirect) {
       redirect = <Redirect push to="/" />;
+    } else if (this.state.paymentRedirect) {
+      redirect = <Redirect push to="/payment" />;
     }
     return (
       <Router>
@@ -291,14 +303,43 @@ class App extends Component {
               exact
               path="/shipping"
               render={() => (
+<<<<<<< HEAD
                 <ShippingForm 
                   address={this.state.address}
                   handleAddressSubmit={this.handleAddressSubmit}>
                   <Link to="/">Go back to shop</Link>{" "}
                 </ShippingForm>
+=======
+                <ShippingView
+                  handleShippingSubmit={this.handleShippingSubmit}
+                  handleAddressUpdate={this.handleAddressUpdate}
+                />
               )}
             />
-            <Route exact path="/payment" render={() => <CreditCardForm />} />
+            <Route
+              exact
+              path="/payment"
+              render={() => (
+                <CreditCardView
+                  shoppingCart={this.state.shoppingCart}
+                  address={this.state.address}
+                  creditCard={this.state.creditCard}
+                >
+                  <ShoppingCart
+                    shoppingCartItems={this.state.shoppingCart}
+                    handleRemoveItemClick={index =>
+                      this.removeItemFromShoppingCart(index)
+                    }
+                    handleAddItemClick={product =>
+                      this.addItemToShoppingCart(product)
+                    }
+                    handlePurchaseBtnClick={this.navToShippingView}
+                    address={this.state.address}
+                  />
+                </CreditCardView>
+>>>>>>> e7ef18ade97bdc3aefc84df3136bf7627746025b
+              )}
+            />
             <Backdrop backDropVisibility={this.state.backDropVisible} />
           </div>
         </div>
