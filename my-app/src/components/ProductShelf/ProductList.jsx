@@ -14,6 +14,11 @@ class ProductList extends Component {
         name: "Red Wood",
         price: 20.0,
         quantity: 1
+      },
+      {
+        name: "Palm",
+        price: 80.0,
+        quantity: 1
       }
     ]
   };
