@@ -8,11 +8,14 @@ class CreditCardView extends Component {
     return (
       <div>
         <h1>Payment</h1>
-        
-        {this.props.children}
-        <ShippingSummary address={this.props.address} />
+        <h2 className="bold-underline">Order Summary</h2>
+        <div className="raisedbox">
+          <span className="bold-underline">Shopping Cart:</span>
+          {this.props.children}
+          <ShippingSummary address={this.props.address} />
+        </div>
+        <h2 className="bold-underline">Credit Card Info</h2>
         <CreditCardForm />
-  
       </div>
     );
   }

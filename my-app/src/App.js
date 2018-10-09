@@ -192,8 +192,6 @@ class App extends Component {
 
   handleShoppingCartButtonClick(e) {
     this.toggleShoppingCart();
-
-    console.log("clicked");
     e.stopPropagation();
   }
 
@@ -259,7 +257,6 @@ class App extends Component {
             username={this.state.loggedUser}
           />
           <div className="App-intro">
-            <ProductCarousel />
             <CategoriesMenu
               handleMouseDown={this.handleBurgerButtonClick}
               menuVisibility={this.state.leftSliderMenuVisible}
@@ -283,7 +280,6 @@ class App extends Component {
                 handleAddItemClick={product =>
                   this.addItemToShoppingCart(product)
                 }
-                handlePurchaseBtnClick={this.navToShippingView}
               >
                 <Link to="/shipping">Enter Shipping Address</Link>
               </ShoppingCart>
@@ -327,7 +323,6 @@ class App extends Component {
                     handleAddItemClick={product =>
                       this.addItemToShoppingCart(product)
                     }
-                    handlePurchaseBtnClick={this.navToShippingView}
                     address={this.state.address}
                   />
                 </CreditCardView>
