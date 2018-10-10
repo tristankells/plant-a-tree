@@ -326,11 +326,12 @@ class App extends Component {
                 }
               >
                 <h3>
+                  
                   <Link
                     to="/shipping"
                     style={{ color: "#FFF", fontWeight: "bold" }}
                   >
-                    Enter Shipping Address
+                    Proceed to Checkout
                   </Link>
                 </h3>
               </ShoppingCart>
@@ -344,9 +345,12 @@ class App extends Component {
                   searchSize={this.state.searchSize}
                   searchType={this.state.searchType}
                   handleAddItemClick={product =>
-                    this.addItemToShoppingCart(product)
-                  }
-                />
+                  this.addItemToShoppingCart(product)
+                  } >
+                  <LatestNews /> 
+
+                  </ProductList>
+                
                 
               )}
             />
@@ -384,7 +388,7 @@ class App extends Component {
             />
             <Backdrop backDropVisibility={this.state.backDropVisible} 
                       handleBackdropClick={this.handleBackdropClick} />
-            <LatestNews />
+            
           </div>
         </div>
       </Router>

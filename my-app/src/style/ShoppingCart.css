@@ -1,10 +1,10 @@
 #shoppingCart {
-  margin: 5%;
-  padding: 15px;
+  padding: 5px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
-  overflow: auto;
-  height: 65%;
+  overflow: scroll;
+  max-height: 380px;
+  background-color: rgba(0, 0, 0, 0.178);
 }
 
 #shoppingCartSlider{

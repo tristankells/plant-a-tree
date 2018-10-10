@@ -6,7 +6,7 @@
     height: 50px;
     background: white;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);
-    z-index: 0;
+    z-index: 400;
 }
 
 .navbar svg:hover{

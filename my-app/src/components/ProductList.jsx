@@ -166,6 +166,7 @@ class ProductList extends Component {
             );
           }
         )}
+        { this.props.children }
         </div>
     );
   }
