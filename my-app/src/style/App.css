@@ -40,3 +40,11 @@
   font-size: 120%;
   margin: 0 auto;
 }
+
+.radioButtonFormControl > * {
+  color: white !important;
+}
+
+.radioButtonFormControl > * > * > * {
+  color: white !important;
+}
