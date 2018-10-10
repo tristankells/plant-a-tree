@@ -293,7 +293,9 @@ class App extends Component {
                   this.addItemToShoppingCart(product)
                 }
               >
-                <Link to="/shipping">Enter Shipping Address</Link>
+                <Link to="/shipping" style={{ color: "#808080" }}>
+                  Enter Shipping Address
+                </Link>
               </ShoppingCart>
             </ShoppingCartSlider>
             {redirect}
