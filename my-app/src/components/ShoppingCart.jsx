@@ -21,7 +21,7 @@ class ShoppingCart extends Component {
 
   totalNumberOfItems() {
     var totalNumberOfItems = 0;
-    this.props.shoppingCartItems.map(item => {
+    this.props.shoppingCartItems.forEach(item => {
       totalNumberOfItems += item.quantity;
     });
     return totalNumberOfItems;

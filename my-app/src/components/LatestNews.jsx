@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-
 import "../style/LatestNews.css";
 import latestnews1 from "../../src/resources/images/latest-news-1.jpg";
 import latestnews2 from "../../src/resources/images/latest-news-2.jpg";
-
-import { Redirect } from "react-router";
 
 //Main Navbar component
 class LatestNews extends Component {
@@ -24,7 +21,7 @@ class LatestNews extends Component {
           including versions of Lorem Ipsum.
           <br />
           <div className="latest__news-image__container">
-          <img src={latestnews1}></img>
+          <img src={latestnews1}  alt=""></img>
           </div>
           
           <br />
@@ -39,7 +36,7 @@ class LatestNews extends Component {
           accident, sometimes on purpose (injected humour and the like).
           <br />
           <div className="latest__news-image__container">
-          <img src={latestnews2}></img>
+          <img src={latestnews2} alt=""></img>
           </div>
           <br />
           There are many variations of passages of Lorem Ipsum available, but

@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import Product from "./Product";
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 
 //Product list contains all the Product components for the store
 class ProductList extends Component {
@@ -142,7 +139,7 @@ class ProductList extends Component {
   };
   //Filters products by tree size catergories
   productsFilteredByTreeSize = products => {
-    console.log(this.props.searchSize);
+
     if (this.props.searchSize === "all") {
     } else {
       products = products.filter(product => {
@@ -152,7 +149,7 @@ class ProductList extends Component {
     return products;
   };
   render() {
-    console.log(this.props.searchType);
+ 
     return (
       <div className="productlist__container">
         {this.productsFilteredByAllSearch(this.state.products).map(

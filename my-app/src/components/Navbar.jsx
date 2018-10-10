@@ -6,7 +6,6 @@ import "../style/Navbar.css";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import Menu from "@material-ui/icons/Menu";
-import { Redirect } from "react-router";
 
 //Import images
 import PatLogoText from "../resources/images/textlogo.png";

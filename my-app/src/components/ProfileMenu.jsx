@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../style/ProfileMenu.css";
 import ClearIcon from "@material-ui/icons/Clear";
-import Button from "@material-ui/core/Button";
 
 class ProfileMenu extends Component {
   render() {

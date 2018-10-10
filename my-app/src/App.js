@@ -8,17 +8,15 @@ import ShoppingCartSlider from "./components/ShoppingCartSlider";
 import CategoriesMenu from "./components/CategoriesMenu";
 import Backdrop from "./components/Backdrop";
 import ProfileMenu from "./components/ProfileMenu";
-import ProductCarousel from "./components/ProductCarousel";
 import LatestNews from "./components/LatestNews";
-// import Product from "./components/ProductShelf/Product";
 import CreditCardView from "./components/PaymentView";
 import ShippingView from "./components/ShippingView";
+
 // import route Components here
 import {
   BrowserRouter as Router,
   Route,
   Link,
-  Switch,
   Redirect
 } from "react-router-dom";
 
@@ -84,7 +82,6 @@ class App extends Component {
 
   // Functions related to Profile Menu
   handleLoginSubmit(event) {
-    var auth = false;
     fetch("http://localhost:117/auth/login/" + this.state.username, {
       method: "POST",
       headers: {
@@ -94,7 +91,9 @@ class App extends Component {
     })
       .then(response => {
         if (response.ok) {
-          this.state.loggedUser = this.state.username;
+          this.setState({
+            loggedUser: this.state.username
+          });
           return response.json();
         } else {
           alert("Incorrect login details");
@@ -225,8 +224,6 @@ class App extends Component {
   //Handle the event of a burger menu click
   handleBurgerButtonClick(e) {
     this.toggleLeftSliderMenu();
-
-    console.log("clicked");
     e.stopPropagation();
   }
 
@@ -275,11 +272,9 @@ class App extends Component {
     this.setState({
       backDropVisible: false
     });
-
-  }
+  };
 
   render() {
-    console.log(this.state.searchType);
     let redirect = <div />;
     if (this.state.mainPageRedirect) {
       redirect = <Redirect push to="/" />;
@@ -326,7 +321,6 @@ class App extends Component {
                 }
               >
                 <h3>
-                  
                   <Link
                     to="/shipping"
                     style={{ color: "#FFF", fontWeight: "bold" }}
@@ -345,13 +339,11 @@ class App extends Component {
                   searchSize={this.state.searchSize}
                   searchType={this.state.searchType}
                   handleAddItemClick={product =>
-                  this.addItemToShoppingCart(product)
-                  } >
-                  <LatestNews /> 
-
-                  </ProductList>
-                
-                
+                    this.addItemToShoppingCart(product)
+                  }
+                >
+                  <LatestNews />
+                </ProductList>
               )}
             />
             <Route
@@ -386,13 +378,13 @@ class App extends Component {
                 </CreditCardView>
               )}
             />
-            <Backdrop backDropVisibility={this.state.backDropVisible} 
-                      handleBackdropClick={this.handleBackdropClick} />
-            
+            <Backdrop
+              backDropVisibility={this.state.backDropVisible}
+              handleBackdropClick={this.handleBackdropClick}
+            />
           </div>
         </div>
       </Router>
-      
     );
   }
 }

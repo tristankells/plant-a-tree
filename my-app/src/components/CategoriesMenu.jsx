@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import "../style/CategoriesMenu.css";
 import ClearIcon from "@material-ui/icons/Clear";
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
@@ -43,7 +40,7 @@ export default class CategoriesMenu extends Component {
             </FormLabel>
             <RadioGroup
               value={this.props.searchType}
-              exclusive
+           
               onChange={this.handleCatergoryChange}
             >
               <FormControlLabel value="all" control={<Radio />} label={"All"} />
@@ -70,7 +67,7 @@ export default class CategoriesMenu extends Component {
             <FormLabel component="legend">Filter by Size</FormLabel>
             <RadioGroup
               value={this.props.searchSize}
-              exclusive
+            
               onChange={this.handleSizeChange}
             >
               <FormControlLabel value="all" control={<Radio />} label={"All"} />
