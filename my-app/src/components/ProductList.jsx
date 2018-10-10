@@ -13,7 +13,7 @@ class ProductList extends Component {
         price: 40.0,
         quantity: 1,
         size: "small",
-        img: "/img//trees/lemon_tree2.jpg",
+        img: "/img/trees/lemon_tree2.jpg",
         type: "trees"
       },
       {
@@ -21,7 +21,7 @@ class ProductList extends Component {
         price: 30.0,
         quantity: 1,
         size: "Large",
-        img: "/img//trees/orange_tree.jpg",
+        img: "/img/trees/orange_tree.jpg",
         type: "trees"
       },
       {

@@ -9,6 +9,7 @@ import CategoriesMenu from "./components/CategoriesMenu";
 import Backdrop from "./components/Backdrop";
 import ProfileMenu from "./components/ProfileMenu";
 import ProductCarousel from "./components/ProductCarousel";
+import LatestNews from "./components/LatestNews";
 // import Product from "./components/ProductShelf/Product";
 import CreditCardView from "./components/PaymentView";
 import ShippingView from "./components/ShippingView";
@@ -325,6 +326,7 @@ class App extends Component {
                     this.addItemToShoppingCart(product)
                   }
                 />
+                
               )}
             />
             <Route
@@ -360,9 +362,11 @@ class App extends Component {
               )}
             />
             <Backdrop backDropVisibility={this.state.backDropVisible} />
+            <LatestNews />
           </div>
         </div>
       </Router>
+      
     );
   }
 }
