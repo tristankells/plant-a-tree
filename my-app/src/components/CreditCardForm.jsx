@@ -28,7 +28,7 @@ class CreditCardForm extends Component {
     this.setState({ year: event.target.value });
   };
 
-  handleCVCChange = event => {
+  handleCVChange = event => {
     this.setState({ cvc: event.target.value });
   };
 
@@ -99,7 +99,7 @@ class CreditCardForm extends Component {
           <input
             type="text"
             value={this.state.cvc}
-            onChange={this.handleCardNumberChange}
+            onChange={this.handleCVChange}
           />
           <br />
           <input type="submit" value="Submit" />
