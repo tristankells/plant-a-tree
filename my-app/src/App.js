@@ -307,7 +307,7 @@ class App extends Component {
                 <h3>
                   <Link
                     to="/shipping"
-                    style={{ color: "#A3E4D7", fontWeight: "bold" }}
+                    style={{ color: "#FFF", fontWeight: "bold" }}
                   >
                     Enter Shipping Address
                   </Link>

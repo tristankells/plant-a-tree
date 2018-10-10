@@ -11,29 +11,36 @@ class ShoppingCartItem extends Component {
     const item = this.props.item;
     return (
       <div className="shoppingcartitem__container">
-        <div>Item</div>
-        <div>
-          <b>------</b>
+        <div className="shoppingcartitem__image-container">
+          <div className="shoppingcartitem__header">
+            Item
+          </div>
+          <img
+            className="ShoppingCartItemsImage"
+            src={window.location.origin + item.img}
+            alt=""
+          />
         </div>
-        <img className="ShoppingCartItemsImage" src={window.location.origin + item.img} alt="" />
-        <div>
-          <b>Name: &nbsp;</b>
-          {item.name}
+        <div className="shoppingcartitem__desc-container">
+          <div>
+            <b>Name: &nbsp;</b>
+            {item.name}
+          </div>
+          <div>
+            <b>Price: &nbsp;</b>
+            {item.price}
+          </div>
+          <div>
+            <b>Quantity: &nbsp;</b>
+            {item.quantity}
+          </div>
+          <Button onClick={() => this.props.handleAddItemClick(item)}>
+            <AddIcon />
+          </Button>
+          <Button onClick={() => this.props.handleRemoveItemClick(item)}>
+            <Remove />
+          </Button>
         </div>
-        <div>
-          <b>Price: &nbsp;</b>
-          {item.price}
-        </div>
-        <div>
-          <b>Quantity: &nbsp;</b>
-          {item.quantity}
-        </div>
-        <Button onClick={() => this.props.handleAddItemClick(item)}>
-          <AddIcon />
-        </Button>
-        <Button onClick={() => this.props.handleRemoveItemClick(item)}>
-          <Remove />
-        </Button>
       </div>
     );
   }

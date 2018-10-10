@@ -21,7 +21,7 @@ class ShoppingCart extends Component {
   }
   render() {
     return (
-      <div style={{ color: "#D1F2EB", fontWeight: "bold" }}>
+      <div>
         <div id="shoppingCartSlider">
           <div id="shoppingCart">
             {this.props.shoppingCartItems.map((item, index) => {
@@ -37,7 +37,7 @@ class ShoppingCart extends Component {
             })}
           </div>
           <br />
-          <div style={{ color: "#D1F2EB", fontWeight: "bold" }}>
+          <div>
             Number of items in cart: &nbsp;{" "}
             {this.props.shoppingCartItems.length}
             <br />
