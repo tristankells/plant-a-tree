@@ -11,7 +11,7 @@ export default class Backdrop extends Component {
     }
 
     return(
-        <div id="backdrop" className={visibility}></div>
+        <div id="backdrop" onMouseDown={this.props.handleBackdropClick} className={visibility}></div>
     );
   }
 }

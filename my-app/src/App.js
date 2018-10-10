@@ -257,6 +257,27 @@ class App extends Component {
     });
   }
 
+  //Close slider when backdrop is clicked/touched
+
+  handleBackdropClick = () => {
+    this.setState({
+      leftSliderMenuVisible: false
+    });
+
+    this.setState({
+      profileMenuVisible: false
+    });
+
+    this.setState({
+      shoppingCartVisible: false
+    });
+
+    this.setState({
+      backDropVisible: false
+    });
+
+  }
+
   render() {
     console.log(this.state.searchType);
     let redirect = <div />;
@@ -361,7 +382,8 @@ class App extends Component {
                 </CreditCardView>
               )}
             />
-            <Backdrop backDropVisibility={this.state.backDropVisible} />
+            <Backdrop backDropVisibility={this.state.backDropVisible} 
+                      handleBackdropClick={this.handleBackdropClick} />
             <LatestNews />
           </div>
         </div>
