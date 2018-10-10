@@ -52,7 +52,8 @@ class ShippingForm extends Component {
       this.state.street.length === 0 ||
       this.state.suburbTown.length === 0 ||
       this.state.city.length === 0 ||
-      this.state.postcode.length === 0
+      this.state.postcode.length === 0 ||
+      this.state.email.length === 0
     ) {
       alert("Please fill all fields");
     } else {
