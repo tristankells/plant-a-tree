@@ -1,48 +1,91 @@
 import React, { Component } from "react";
 import Product from "./Product";
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
 //Product list contains all the Product components for the store
 class ProductList extends Component {
   state = {
     products: [
       {
-        name: "Birch",
-        price: 100.0,
+        name: "Lemon Tree",
+        price: 40.0,
         quantity: 1,
         size: "small",
-        img: "/img/birch-trees.jpg",
+        img: "/img//trees/lemon_tree2.jpg",
         type: "trees"
       },
       {
-        name: "Red Wood",
+        name: "Orange Tree",
+        price: 30.0,
+        quantity: 1,
+        size: "Large",
+        img: "/img//trees/orange_tree.jpg",
+        type: "trees"
+      },
+      {
+        name: "Evergreen",
+        price: 100.0,
+        quantity: 1,
+        size: "large",
+        img: "/img/trees/evergreen.jpg",
+        type: "trees"
+      },
+      {
+        name: "Fig Tree",
         price: 20.0,
         quantity: 1,
         size: "small",
-        img: "/img/red-wood.jpg",
+        img: "/img/trees/fig_tree.jpg",
         type: "trees"
       },
       {
         name: "Palm",
         price: 80.0,
         quantity: 1,
+        size: "medium",
+        img: "/img/trees/palm2.jpeg",
+        type: "trees"
+      },
+      {
+        name: "Palm #2",
+        price: 80.0,
+        quantity: 1,
+        size: "medium",
+        img: "/img/trees/palm3.jpeg",
+        type: "trees"
+      },
+      {
+        name: "Gum Tree",
+        price: 80.0,
+        quantity: 1,
+        size: "large",
+        img: "/img//trees/gum_tree.png",
+        type: "trees"
+      },
+      {
+        name: "Hedge",
+        price: 80.0,
+        quantity: 1,
         size: "small",
-        img: "/img/palm-tree.jpg",
+        img: "/img//trees/hedge2.jpeg",
         type: "trees"
       },
       {
-        name: "Pine",
+        name: "Hedge #2",
         price: 80.0,
         quantity: 1,
-        size: "medium",
-        img: "/img/pine.jpg",
+        size: "small",
+        img: "/img//trees/hedge3.jpg",
         type: "trees"
       },
       {
-        name: "Oak",
+        name: "Kauri Tree",
         price: 80.0,
         quantity: 1,
-        size: "medium",
-        img: "/img/tree.jpg",
+        size: "large",
+        img: "/img//trees/kauri_tree.jpg",
         type: "trees"
       },
       {
@@ -115,7 +158,7 @@ class ProductList extends Component {
         {this.productsFilteredByAllSearch(this.state.products).map(
           (product, i) => {
             return (
-              <Product
+                <Product
                 product={product}
                 handleAddItemClick={this.props.handleAddItemClick}
                 key={i}
@@ -123,7 +166,7 @@ class ProductList extends Component {
             );
           }
         )}
-      </div>
+        </div>
     );
   }
 }
