@@ -21,33 +21,32 @@ class ShoppingCart extends Component {
   }
   render() {
     return (
-      <div id="shoppingCartSlider">
-        <div id="shoppingCart">
-          {this.props.shoppingCartItems.map((item, index) => {
-            return (
-              <ShoppingCartItem
-                key={index}
-                index={index}
-                item={item}
-                handleRemoveItemClick={this.props.handleRemoveItemClick}
-                handleAddItemClick={this.props.handleAddItemClick}
-              />
-            );
-          })}
-        </div>
-        <br />
-        <div style={{ color: "#A3E4D7  ", fontWeight: "bold" }}>
-          Number of items in cart: &nbsp; {this.props.shoppingCartItems.length}
+      <div style={{ color: "#D1F2EB", fontWeight: "bold" }}>
+        <div id="shoppingCartSlider">
+          <div id="shoppingCart">
+            {this.props.shoppingCartItems.map((item, index) => {
+              return (
+                <ShoppingCartItem
+                  key={index}
+                  index={index}
+                  item={item}
+                  handleRemoveItemClick={this.props.handleRemoveItemClick}
+                  handleAddItemClick={this.props.handleAddItemClick}
+                />
+              );
+            })}
+          </div>
+          <br />
+          <div style={{ color: "#D1F2EB", fontWeight: "bold" }}>
+            Number of items in cart: &nbsp;{" "}
+            {this.props.shoppingCartItems.length}
+            <br />
+          </div>
+          Shipping: &nbsp; $20 <br />
+          <br />
+          <b>Total Cost:</b> &nbsp; $<span>{this.totalCostOfShopping()}</span>
           <br />
         </div>
-        <div style={{ color: "#A3E4D7  ", fontWeight: "bold" }}>
-          Shipping: &nbsp; $20{" "}
-        </div>
-        <br />
-        <div style={{ color: "#A3E4D7  ", fontWeight: "bold" }}>
-          <b>Total Cost:</b> &nbsp; $<span>{this.totalCostOfShopping()}</span>
-        </div>
-        <br />
         {this.props.children}
       </div>
     );
