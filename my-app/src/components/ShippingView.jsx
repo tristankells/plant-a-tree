@@ -6,7 +6,9 @@ class ShippingView extends Component {
   render() {
     return (
       <div className="shipping-view-div">
-        <h2>PLEASE ENTER YOUR SHIPPING INFORMATION</h2>
+        <div style={{ font: "Arial Narrow", fontWeight: "bold" }}>
+          <br /> SHIPPING INFORMATION
+        </div>
         <ShippingForm
           handleAddressUpdate={this.props.handleAddressUpdate}
           handleShippingSubmit={this.props.handleShippingSubmit}
