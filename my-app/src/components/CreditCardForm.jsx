@@ -42,15 +42,12 @@ class CreditCardForm extends Component {
       this.state.cvc.length === 0
     ) {
       alert("Please fill all fields");
+    } else if (this.state.cardNumber.length !== 16) {
+      alert(
+        "Card number should be exactly 16 characters. Please enter the correct credit card number."
+      );
     } else {
-      this.props.handleAddressUpdate({
-        fullName: this.state.fullName,
-        steet: this.state.steet,
-        suburbTown: this.state.suburbTown,
-        city: this.state.city,
-        postcode: this.state.postcode
-      });
-      this.props.handleShippingSubmit();
+      this.props.handlePaymentSubmit();
     }
   };
   render() {

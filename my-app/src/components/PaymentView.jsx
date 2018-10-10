@@ -4,6 +4,13 @@ import ShippingSummary from "./ShippingSummary";
 
 class CreditCardView extends Component {
   state = {};
+
+  handlePaymentSubmit = () => {
+    alert(
+      "Thanks for your order. A confirmation email with your tracking number has sent to " +
+        this.props.address.email
+    );
+  };
   render() {
     return (
       <div>
@@ -12,11 +19,11 @@ class CreditCardView extends Component {
         <div className="raisedbox">
           <span className="bold-underline">Shopping Cart:</span>
           {this.props.children}
-          <br/>
+          <br />
           <ShippingSummary address={this.props.address} />
         </div>
         <h2 className="bold-underline">Credit Card Info</h2>
-        <CreditCardForm />
+        <CreditCardForm handlePaymentSubmit={this.handlePaymentSubmit} />
       </div>
     );
   }
