@@ -11,7 +11,7 @@ class ProductList extends Component {
         quantity: 1,
         size: "small",
         img: "/img/birch-trees.jpg",
-        type: "tree"
+        type: "trees"
       },
       {
         name: "Red Wood",
@@ -19,7 +19,7 @@ class ProductList extends Component {
         quantity: 1,
         size: "small",
         img: "/img/red-wood.jpg",
-        type: "tree"
+        type: "trees"
       },
       {
         name: "Palm",
@@ -27,7 +27,7 @@ class ProductList extends Component {
         quantity: 1,
         size: "small",
         img: "/img/palm-tree.jpg",
-        type: "tree"
+        type: "trees"
       },
       {
         name: "Pine",
@@ -35,7 +35,7 @@ class ProductList extends Component {
         quantity: 1,
         size: "medium",
         img: "/img/pine.jpg",
-        type: "tree"
+        type: "trees"
       },
       {
         name: "Oak",
@@ -43,12 +43,13 @@ class ProductList extends Component {
         quantity: 1,
         size: "medium",
         img: "/img/tree.jpg",
-        type: "tree"
+        type: "trees"
       },
       {
         name: "Shears",
         price: 10.0,
         quantity: 1,
+        size: "small",
         img: "/img/shears.jpg",
         type: "tools"
       },
@@ -56,6 +57,7 @@ class ProductList extends Component {
         name: "Shovel",
         price: 20.0,
         quantity: 1,
+        size: "medium",
         img: "/img/shovel.jpg",
         type: "tools"
       },
@@ -63,6 +65,7 @@ class ProductList extends Component {
         name: "Brown Pot",
         price: 10.0,
         quantity: 1,
+        size: "small",
         img: "/img/brown-pot.jpg",
         type: "pots"
       },
@@ -70,35 +73,56 @@ class ProductList extends Component {
         name: "Black Pot",
         price: 15.0,
         quantity: 1,
+        size: "small",
         img: "/img/black-pot.jpg",
         type: "pots"
       }
     ]
   };
 
-  //Filters tree by search catergories
-  productsFilteredByTree = () => {
-    var filteredProducts = this.state.products;
+  productsFilteredByAllSearch = products => {
+    products = this.productsFilteredByType(products);
+    products = this.productsFilteredByTreeSize(products);
+    return products;
+  };
+
+  //Products filtered by catergory
+  productsFilteredByType = products => {
+   
+    if (this.props.searchType === "all") {
+    } else {
+      products = products.filter(product => {
+        return product.type === this.props.searchType;
+      });
+    }
+    return products;
+  };
+  //Filters products by tree size catergories
+  productsFilteredByTreeSize = products => {
+    console.log(this.props.searchSize);
     if (this.props.searchSize === "all") {
     } else {
-      filteredProducts = filteredProducts.filter(product => {
+      products = products.filter(product => {
         return product.size === this.props.searchSize;
       });
     }
-    return filteredProducts;
+    return products;
   };
   render() {
+    console.log(this.props.searchType);
     return (
       <div className="productlist__container">
-        {this.productsFilteredByTree().map((product, i) => {
-          return (
-            <Product
-              product={product}
-              handleAddItemClick={this.props.handleAddItemClick}
-              key={i}
-            />
-          );
-        })}
+        {this.productsFilteredByAllSearch(this.state.products).map(
+          (product, i) => {
+            return (
+              <Product
+                product={product}
+                handleAddItemClick={this.props.handleAddItemClick}
+                key={i}
+              />
+            );
+          }
+        )}
       </div>
     );
   }

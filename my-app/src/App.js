@@ -41,7 +41,8 @@ class App extends Component {
       address: {},
       creditCard: {},
       //Variables related to product filter
-      searchSize: "all"
+      searchSize: "all",
+      searchType: "all"
     };
     this.handleShoppingCartButtonClick = this.handleShoppingCartButtonClick.bind(
       this
@@ -71,6 +72,12 @@ class App extends Component {
   updateSearchSize = searchSize => {
     this.setState({
       searchSize: searchSize
+    });
+  };
+
+  updateSearchType = searchType => {
+    this.setState({
+      searchType: searchType
     });
   };
 
@@ -250,6 +257,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.searchType);
     let redirect = <div />;
     if (this.state.mainPageRedirect) {
       redirect = <Redirect push to="/" />;
@@ -272,6 +280,8 @@ class App extends Component {
               menuVisibility={this.state.leftSliderMenuVisible}
               updateSearchSize={this.updateSearchSize}
               searchSize={this.state.searchSize}
+              searchType={this.state.searchType}
+              updateSearchType={this.updateSearchType}
             />
             <ProfileMenu
               handleMouseDown={this.handleProfileMenuButtonClick}
@@ -303,6 +313,7 @@ class App extends Component {
               render={() => (
                 <ProductList
                   searchSize={this.state.searchSize}
+                  searchType={this.state.searchType}
                   handleAddItemClick={product =>
                     this.addItemToShoppingCart(product)
                   }
