@@ -21,27 +21,32 @@ class ShoppingCart extends Component {
   }
   render() {
     return (
-      <div id="shoppingCartSlider">
-        <div id="shoppingCart">
-          {this.props.shoppingCartItems.map((item, index) => {
-            return (
-              <ShoppingCartItem
-                key={index}
-                index={index}
-                item={item}
-                handleRemoveItemClick={this.props.handleRemoveItemClick}
-                handleAddItemClick={this.props.handleAddItemClick}
-              />
-            );
-          })}
+      <div style={{ color: "#D1F2EB", fontWeight: "bold" }}>
+        <div id="shoppingCartSlider">
+          <div id="shoppingCart">
+            {this.props.shoppingCartItems.map((item, index) => {
+              return (
+                <ShoppingCartItem
+                  key={index}
+                  index={index}
+                  item={item}
+                  handleRemoveItemClick={this.props.handleRemoveItemClick}
+                  handleAddItemClick={this.props.handleAddItemClick}
+                />
+              );
+            })}
+          </div>
+          <br />
+          <div style={{ color: "#D1F2EB", fontWeight: "bold" }}>
+            Number of items in cart: &nbsp;{" "}
+            {this.props.shoppingCartItems.length}
+            <br />
+          </div>
+          Shipping: &nbsp; $20 <br />
+          <br />
+          <b>Total Cost:</b> &nbsp; $<span>{this.totalCostOfShopping()}</span>
+          <br />
         </div>
-        <br />
-        Number of items in cart: &nbsp; {this.props.shoppingCartItems.length}
-        <br />
-        Shipping: &nbsp; $20
-        <br />
-        <b>Total Cost:</b> &nbsp; $<span>{this.totalCostOfShopping()}</span>
-        <br />
         {this.props.children}
       </div>
     );
