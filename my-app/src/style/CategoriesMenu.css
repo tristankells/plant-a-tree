@@ -1,5 +1,5 @@
 #leftSliderMenu {
-  width: 45vw;
+  width: 60vw;
   max-width: 300px;
   height: 100vh;
   background-image: linear-gradient(-90deg, #182A0F, rgb(43, 66, 31));
@@ -19,6 +19,7 @@
   z-index: 200;
   box-shadow: 10px 0px 50px rgba(0,0,0,0.2);
   opacity: 0.92;
+  text-align: left !important;
 }
 
 #leftSliderMenu.hide {
@@ -38,4 +39,12 @@
 
 #leftSliderMenu h2 a:hover {
   text-decoration: underline;
+}
+
+.leftSlider__filter-section {
+  padding: 20px;
+}
+
+.leftSlider__filter-section-category {
+  margin-bottom: 50px;
 }

@@ -34,11 +34,12 @@ export default class CategoriesMenu extends Component {
           className="slider-close-icon"
           onMouseDown={this.props.handleMouseDown}
         />
-        <div>
-          {/* Form for search by catergory */}
+        <div className="leftSlider__filter-section">
+          {/* Form for search by category */}
+          <div className="leftSlider__filter-section-category">
           <FormControl className="radioButtonFormControl" component="fieldset">
             <FormLabel component="legend">
-              Search By Product Catergory
+              Filter by Type
             </FormLabel>
             <RadioGroup
               value={this.props.searchType}
@@ -63,9 +64,10 @@ export default class CategoriesMenu extends Component {
               />
             </RadioGroup>
           </FormControl>
+          </div>
           {/* Form for search by size */}
           <FormControl className="radioButtonFormControl" component="fieldset">
-            <FormLabel component="legend">Search By Product Size</FormLabel>
+            <FormLabel component="legend">Filter by Size</FormLabel>
             <RadioGroup
               value={this.props.searchSize}
               exclusive
