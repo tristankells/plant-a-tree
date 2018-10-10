@@ -36,11 +36,17 @@ class ShoppingCart extends Component {
           })}
         </div>
         <br />
-        Number of items in cart: &nbsp; {this.props.shoppingCartItems.length}
+        <div style={{ color: "#A3E4D7  ", fontWeight: "bold" }}>
+          Number of items in cart: &nbsp; {this.props.shoppingCartItems.length}
+          <br />
+        </div>
+        <div style={{ color: "#A3E4D7  ", fontWeight: "bold" }}>
+          Shipping: &nbsp; $20{" "}
+        </div>
         <br />
-        Shipping: &nbsp; $20
-        <br />
-        <b>Total Cost:</b> &nbsp; $<span>{this.totalCostOfShopping()}</span>
+        <div style={{ color: "#A3E4D7  ", fontWeight: "bold" }}>
+          <b>Total Cost:</b> &nbsp; $<span>{this.totalCostOfShopping()}</span>
+        </div>
         <br />
         {this.props.children}
       </div>
