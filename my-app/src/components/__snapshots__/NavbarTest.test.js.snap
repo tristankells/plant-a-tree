@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar should render correctly in "debug" mode 1`] = `
+<header
+  className="navbar"
+>
+  <nav
+    className="navbar__navigation"
+  >
+    <div
+      className="navbar__burger"
+    >
+      <ul>
+        <li>
+          <a>
+            <pure(MenuIcon) />
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="navbar__logo__container"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt=""
+          className="navbar__logo"
+          src="textlogo.png"
+        />
+      </a>
+    </div>
+    <div>
+      <p />
+    </div>
+    <div
+      className="navbar__links"
+    >
+      <ul>
+        <li>
+          <a>
+            <pure(AccountCircleIcon) />
+          </a>
+        </li>
+        <li>
+          <a>
+            <pure(ShoppingCartIcon) />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+`;
