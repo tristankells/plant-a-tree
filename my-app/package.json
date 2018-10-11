@@ -32,5 +32,10 @@
   "devDependencies": {
     "enzyme": "^3.7.0",
     "react-addons-test-utils": "^15.6.2"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }
