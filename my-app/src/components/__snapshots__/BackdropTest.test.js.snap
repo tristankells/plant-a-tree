@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Backdrop should render correctly in "debug" mode 1`] = `
+<div
+  className="hide"
+  id="backdrop"
+/>
+`;

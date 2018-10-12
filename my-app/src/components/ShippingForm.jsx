@@ -9,7 +9,8 @@ class ShippingForm extends Component {
       street: "",
       suburbTown: "",
       city: "",
-      postcode: ""
+      postcode: "",
+      email: ""
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -17,7 +18,12 @@ class ShippingForm extends Component {
     this.handleSuburbTownChange = this.handleSuburbTownChange.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
     this.handlePostcodeChange = this.handlePostcodeChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleEmailChange(event) {
+    this.setState({ email: event.target.value });
   }
 
   handleNameChange(event) {
@@ -46,7 +52,8 @@ class ShippingForm extends Component {
       this.state.street.length === 0 ||
       this.state.suburbTown.length === 0 ||
       this.state.city.length === 0 ||
-      this.state.postcode.length === 0
+      this.state.postcode.length === 0 ||
+      this.state.email.length === 0
     ) {
       alert("Please fill all fields");
     } else {
@@ -55,7 +62,8 @@ class ShippingForm extends Component {
         street: this.state.street,
         suburbTown: this.state.suburbTown,
         city: this.state.city,
-        postcode: this.state.postcode
+        postcode: this.state.postcode,
+        email: this.state.email
       });
       this.props.handleShippingSubmit();
     }
@@ -72,6 +80,12 @@ class ShippingForm extends Component {
               type="text"
               value={this.state.fullName}
               onChange={this.handleNameChange}
+            />
+            <span>Email:</span>
+            <input
+              type="text"
+              value={this.state.email}
+              onChange={this.handleEmailChange}
             />
             <span>Street No & Name:</span>
             <input
