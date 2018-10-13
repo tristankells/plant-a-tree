@@ -63,6 +63,7 @@ class ShippingForm extends Component {
     }
 
   handleLoginSubmit(event) {
+    var x;
     fetch("http://localhost:117/auth/login/" + this.state.username, {
       method: "POST",
       headers: {
@@ -77,12 +78,8 @@ class ShippingForm extends Component {
         } else {
           alert("Incorrect login details");
         }
-      })
-      .then(function(myJson) {
-        if (myJson) {
-          alert("Welcome back "+myJson.fullName+" Address Details are: "+myJson.address+", "+myJson.town+", "+myJson.city);
-        }
-      });
+      }).then(data => this.setState({ street: data.address, city: data.city, postcode: data.postcode, email: data.email, town: data.town, fullName: data.fullName, suburbTown: data.town }));
+      alert("Welcome back "+this.state.username);
     event.preventDefault();
   }
 

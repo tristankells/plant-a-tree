@@ -18,7 +18,7 @@ class ProfileMenu extends Component {
 
         <div className="account-section__header">ACCOUNT</div>
 
-        <div className="login-section__header"><b>Login / Signup</b></div>
+        <div className="login-section__header"><b>Signup</b></div>
 
           <label>
           Username:
@@ -85,7 +85,6 @@ class ProfileMenu extends Component {
               onChange={this.props.handleInputChange} />
           </label><br/>
           
-          <button className="profile-submit-button" type="submit" value="Log In" onClick={this.props.handleLoginSubmit}>Log In</button>
           <button className="profile-submit-button" type="submit" value="Sign Up" onClick={this.props.signUpSubmit}>Sign Up</button>
         
       </div>
