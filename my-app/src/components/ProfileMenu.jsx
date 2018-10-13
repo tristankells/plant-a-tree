@@ -53,7 +53,7 @@ class ProfileMenu extends Component {
               onChange={this.props.handleInputChange} />
           </label><br/>
           <label>
-            Steert No & Name:
+            Street & no:
             <input
               name="address"
               type="text"
@@ -61,7 +61,7 @@ class ProfileMenu extends Component {
               onChange={this.props.handleInputChange} />
           </label><br/>
           <label>
-            Suburb / Town:
+            Suburb:
             <input
               name="town"
               type="text"
