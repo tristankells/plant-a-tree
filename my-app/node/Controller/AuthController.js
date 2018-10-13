@@ -20,7 +20,9 @@ var routes = function (){
                 try {
                     // If else checking hashes against each other for matching decrytped value
                     if(bcrypt.compareSync(req.headers.password, results[0].hash) == true){
-                        res.status(200).json("You have successfully logged in, welcome back: "+req.params.user);
+                        connection.query('SELECT * FROM `userlist` WHERE username LIKE "'+req.params.user+'"', function (error, results, fields) {
+                            res.status(200).json( results[0]);
+                        })
                     }else{
                         res.status(418).json("Incorrect login");
                     }  
@@ -51,7 +53,7 @@ var routes = function (){
                         connection.query('CREATE TABLE '+req.headers.user+'cart (itemName VARCHAR(50), price FLOAT, Deliverable tinyint, dateAdded VARCHAR(80), purchased char(1));', function (error, results, fields) {});
 
                         // SQL query to insert user into the database
-                        connection.query('INSERT INTO `userlist`(`username`, `hash`, `created_at`, `cartid`) VALUES ("'+req.headers.user+'","'+hashPass+'","'+new Date()+'", "'+req.headers.user+'cart")', function (error, results, fields) {
+                        connection.query('INSERT INTO `userlist`(`fullName`, `address`, `email`, `town`, `city`, `postcode`, `username`, `hash`, `created_at`, `cartid`) VALUES ("'+req.headers.fullName+'", "'+req.headers.address+'", "'+req.headers.email+'", "'+req.headers.town+'", "'+req.headers.city+'", "'+req.headers.postcode+'", "'+req.headers.user+'","'+hashPass+'","'+new Date()+'", "'+req.headers.user+'cart")', function (error, results, fields) {
 
                             // Email data to send confirming that the user has signed up
                             var data = {

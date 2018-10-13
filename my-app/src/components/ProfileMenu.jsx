@@ -27,8 +27,7 @@ class ProfileMenu extends Component {
               type="text"
               checked={this.props.username}
               onChange={this.props.handleInputChange} />
-          </label>
-          <br/>
+          </label><br/>
           <label>
             Password:
             <input
@@ -36,7 +35,56 @@ class ProfileMenu extends Component {
               type="password"
               value={this.props.password}
               onChange={this.props.handleInputChange} />
+          </label><br/><br/>
+          <label>
+            Full name:
+            <input
+              name="fullName"
+              type="text"
+              value={this.props.fullname}
+              onChange={this.props.handleInputChange} />
           </label><br/>
+          <label>
+            Email:
+            <input
+              name="email"
+              type="text"
+              value={this.props.email}
+              onChange={this.props.handleInputChange} />
+          </label><br/>
+          <label>
+            Steert No & Name:
+            <input
+              name="address"
+              type="text"
+              value={this.props.address}
+              onChange={this.props.handleInputChange} />
+          </label><br/>
+          <label>
+            Suburb / Town:
+            <input
+              name="town"
+              type="text"
+              value={this.props.town}
+              onChange={this.props.handleInputChange} />
+          </label><br/>
+          <label>
+            City:
+            <input
+              name="city"
+              type="text"
+              value={this.props.city}
+              onChange={this.props.handleInputChange} />
+          </label><br/>
+          <label>
+            Postcode:
+            <input
+              name="postcode"
+              type="text"
+              value={this.props.postcode}
+              onChange={this.props.handleInputChange} />
+          </label><br/>
+          
           <button className="profile-submit-button" type="submit" value="Log In" onClick={this.props.handleLoginSubmit}>Log In</button>
           <button className="profile-submit-button" type="submit" value="Sign Up" onClick={this.props.signUpSubmit}>Sign Up</button>
         

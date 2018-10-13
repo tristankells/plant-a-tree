@@ -10,7 +10,10 @@ class ShippingForm extends Component {
       suburbTown: "",
       city: "",
       postcode: "",
-      email: ""
+      email: "",
+      loggedUser: "",
+      username: "",
+      password: "",
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -20,6 +23,8 @@ class ShippingForm extends Component {
     this.handlePostcodeChange = this.handlePostcodeChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   handleEmailChange(event) {
@@ -44,6 +49,41 @@ class ShippingForm extends Component {
 
   handlePostcodeChange(event) {
     this.setState({ postcode: event.target.value });
+  }
+
+    // Input change to handle login form changes
+    handleInputChange(event) {
+      const target = event.target;
+      const value = target.type === "checkbox" ? target.checked : target.value;
+      const name = target.name;
+  
+      this.setState({
+        [name]: value
+      });
+    }
+
+  handleLoginSubmit(event) {
+    fetch("http://localhost:117/auth/login/" + this.state.username, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        password: this.state.password
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          this.state.loggedUser = this.state.username;
+          return response.json();
+        } else {
+          alert("Incorrect login details");
+        }
+      })
+      .then(function(myJson) {
+        if (myJson) {
+          alert("Welcome back "+myJson.fullName+" Address Details are: "+myJson.address+", "+myJson.town+", "+myJson.city);
+        }
+      });
+    event.preventDefault();
   }
 
   handleSubmit(event) {
@@ -72,7 +112,6 @@ class ShippingForm extends Component {
   render() {
     return (
       <div>
-        <Button>RETURN TO STORE</Button>
         <div className="raisedbox">
           <form className="shipping-form" onSubmit={this.handleSubmit}>
             <span>Full Name:</span>
@@ -111,8 +150,30 @@ class ShippingForm extends Component {
               value={this.state.postcode}
               onChange={this.handlePostcodeChange}
             />
+            <br/>
             <input type="submit" value="Submit" />
           </form>
+        </div>
+        <div className="raisedbox">
+          <p>Or log in here to retrieve your address details</p>
+            <form className="shipping-form">
+              <span>Username:</span>
+              <input
+                name="username"
+                type="text"
+                value={this.state.username}
+                onChange={this.handleInputChange}
+              />
+              <span>Password:</span>
+              <input
+                name="password"
+                type="password"
+                value={this.state.password}
+                onChange={this.handleInputChange}
+              />
+              <br/>
+              <button value="Log In" onClick={this.handleLoginSubmit}>Log In</button>
+            </form>
         </div>
       </div>
     );
