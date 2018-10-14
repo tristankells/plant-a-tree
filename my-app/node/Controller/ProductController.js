@@ -4,8 +4,8 @@ var router = express.Router();
 var connection = require("../connection/connect")(); 
 
 // MailGun import
-var api_key = '1239d9iasoj';
-var domain = '1230-oiasdkl';
+var api_key = '';
+var domain = '';
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 var routes = function (){
@@ -57,7 +57,26 @@ var routes = function (){
     router.route('/purchase')
         .post(function (req, res){
             try {
-                res.status(200).json("Purchase made on cart: 4521 by user: admin"); 
+                // Email data to send purchase information
+                var data0 = {
+                    from: 'PlantATree <maxfrancis212@gmail.com>',
+                    to: 'maxfrancis212@gmail.com',
+                    subject: 'Purchase',
+                    text: 'Thank you for your purchase!'
+                  };
+
+                // Email data to send purchase information
+                var data1 = {
+                    from: 'Orders <maxfrancis212@gmail.com>',
+                    to: 'maxfrancis212@gmail.com',
+                    subject: 'Order',
+                    text: 'An order has been placed!'
+                  };
+                // Send an email using the mailgun API 
+                mailgun.messages().send(data0, function (error, body) {});
+                mailgun.messages().send(data1, function (error, body) {});
+
+                res.status(200).json("Purchase made, An email shall be sent out with additional information"); 
             } catch (error) {
                 res.status(200).json("Something went wrong with finalizing your purchase");
             }   
