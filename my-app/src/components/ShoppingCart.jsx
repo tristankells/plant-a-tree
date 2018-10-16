@@ -5,17 +5,16 @@ import ShoppingCartItem from "./ShoppingCartItem";
 //The shopping cart componet. Displays all ShoppingCartItems and a tally of total items
 class ShoppingCart extends Component {
   totalCostOfShopping() {
-    var totalPrice = 0;
     var shoppingCartItems = this.props.shoppingCartItems;
 
     //If item cart, calcualte cost and add shipping, total price = 0
+    var totalPrice = 0;
     if (shoppingCartItems.length !== 0) {
       shoppingCartItems.forEach(shoppingCartItem => {
         totalPrice += shoppingCartItem.price * shoppingCartItem.quantity;
       });
       totalPrice += 20;
     }
-
     return totalPrice;
   }
 

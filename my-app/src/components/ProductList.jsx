@@ -128,7 +128,6 @@ class ProductList extends Component {
 
   //Products filtered by catergory
   productsFilteredByType = products => {
-   
     if (this.props.searchType === "all") {
     } else {
       products = products.filter(product => {
