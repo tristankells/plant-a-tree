@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShippingView should render correctly in "debug" mode 1`] = `
+<div
+  className="shipping-view-div"
+>
+  <div
+    style={
+      Object {
+        "font": "Arial Narrow",
+        "fontWeight": "bold",
+      }
+    }
+  >
+    <br />
+     SHIPPING INFORMATION
+  </div>
+  <ShippingForm />
+</div>
+`;

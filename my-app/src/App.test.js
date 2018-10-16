@@ -44,6 +44,7 @@ it('renders the ShoppingCartItem', () => {
     ReactDOM.render(<ShoppingCartItem />, div);
 })
 
-test('Visibility of component Categories changes when clicked', () => {
-
+test('Visibility of component Categories changes when clicked', 
+() => {
+//////////////////////////////////////////////////////////////////////
 });

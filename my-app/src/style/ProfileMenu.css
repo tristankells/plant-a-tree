@@ -39,9 +39,9 @@
   border-radius: 20px;
   height: 25px;
   margin: 5px;
-  padding-left: 15px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
+  float: right;
 }
 
 #profileMenu input:focus{
@@ -50,6 +50,10 @@
 
 #profileMenu label {
   font-size: 12px;
+  display: inline-block;
+  float: right;
+  width: 250px;
+  text-align: right;
 }
 
 .account-section__header{

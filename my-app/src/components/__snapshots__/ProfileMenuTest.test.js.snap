@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileMenu should render correctly in "debug" mode 1`] = `
+<div
+  className="hide"
+  id="profileMenu"
+>
+  <pure(ClearIcon)
+    className="slider-close-icon"
+  />
+  <div
+    className="account-section__header"
+  >
+    ACCOUNT
+  </div>
+  <div
+    className="login-section__header"
+  >
+    <b>
+      Login / Signup
+    </b>
+  </div>
+  <label>
+    Username:
+    <input
+      name="username"
+      type="text"
+    />
+  </label>
+  <br />
+  <label>
+    Password:
+    <input
+      name="password"
+      type="password"
+    />
+  </label>
+  <br />
+  <button
+    className="profile-submit-button"
+    type="submit"
+    value="Log In"
+  >
+    Log In
+  </button>
+  <button
+    className="profile-submit-button"
+    type="submit"
+    value="Sign Up"
+  >
+    Sign Up
+  </button>
+</div>
+`;

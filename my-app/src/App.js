@@ -36,6 +36,12 @@ class App extends Component {
       // Variables related to Profile Menu
       username: "",
       password: "",
+      fullname: "",
+      email: "",
+      address: "",
+      town: "",
+      city: "",
+      postcode: "",
       // Variables related to Shipping Page
       address: {},
       creditCard: {},
@@ -86,7 +92,7 @@ class App extends Component {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        password: this.state.password
+        password: this.state.password,
       }
     })
       .then(response => {
@@ -101,7 +107,7 @@ class App extends Component {
       })
       .then(function(myJson) {
         if (myJson) {
-          alert(myJson);
+          alert("Welcome back "+this.state.username);
         }
       });
 
@@ -115,7 +121,13 @@ class App extends Component {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         password: this.state.password,
-        user: this.state.username
+        user: this.state.username,
+        fullname: this.state.fullname,
+        email: this.state.email,
+        address: this.state.address,
+        town: this.state.town,
+        city: this.state.city,
+        postcode: this.state.postcode
       }
     })
       .then(response => {
